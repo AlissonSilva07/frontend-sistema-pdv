@@ -5,22 +5,22 @@
         </div>
     </div>
     <div class="flex flex-col items-start gap-6">
-        <div class="flex items-center gap-4">
-            <img src="./assets/sidebar/inicio.png" alt="Início">
-            <p class="text-base text-[#bbc2c5]">Início</p>
-        </div>
-        <div class="flex items-center gap-4">
-            <img src="./assets/sidebar/vender.png" alt="Vender">
-            <p class="text-base text-[#bbc2c5]">Vender</p>
-        </div>
-        <div class="flex items-center gap-4">
-            <img src="./assets/sidebar/historico.png" alt="Histórico">
-            <p class="text-base text-[#bbc2c5]">Histórico</p>
-        </div>
-        <div class="flex items-center gap-4">
-            <img src="./assets/sidebar/produtos.png" alt="Produtos">
-            <p class="text-base text-[#bbc2c5]">Produtos</p>
-        </div>
+        <button class="group flex items-center gap-4">
+            <fa-icon [icon]="faHouse" class="text-[#bbc2c5] group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
+            <p class="text-base text-[#bbc2c5] group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Início</p>
+        </button>
+        <button class="group flex items-center gap-4">
+            <fa-icon [icon]="faMoneyBillWave" class="text-[#bbc2c5] group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
+            <p class="text-base text-[#bbc2c5] group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Vender</p>
+        </button>
+        <button class="group flex items-center gap-4">
+            <fa-icon [icon]="faCartShopping" class="text-[#bbc2c5] group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
+            <p class="text-base text-[#bbc2c5] group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Histórico</p>
+        </button>
+        <button class="group flex items-center gap-4">
+            <fa-icon [icon]="faProductHunt" class="text-[#bbc2c5] group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
+            <p class="text-base text-[#bbc2c5] group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Produtos</p>
+        </button>
     </div> 
     <div class="flex items-center gap-4 w-full absolute bottom-10">
         <img src="./assets/sidebar/avatar.png" alt="">
