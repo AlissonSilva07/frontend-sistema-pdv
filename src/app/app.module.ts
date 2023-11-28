@@ -9,6 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TelaHistoricoComponent } from './pages/tela-historico/tela-historico.component';
 import { TelaInicioComponent } from './pages/tela-inicio/tela-inicio.component';
 import { TelaProdutosComponent } from './pages/tela-produtos/tela-produtos.component';
+import { InputComponent } from './shared/input/input.component';
+import { CardVendaComponent } from './shared/card-venda/card-venda.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { TelaProdutosComponent } from './pages/tela-produtos/tela-produtos.compo
     TelaHistoricoComponent,
     TelaInicioComponent,
     TelaProdutosComponent,
+    InputComponent,
+    CardVendaComponent,
   ],
   imports: [
     BrowserModule,
