@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,4 +8,6 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 })
 export class InputComponent {
   faMagnifyingGlass = faMagnifyingGlass;
+
+  @Input() texto = "";
 }

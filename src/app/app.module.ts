@@ -11,6 +11,8 @@ import { TelaInicioComponent } from './pages/tela-inicio/tela-inicio.component';
 import { TelaProdutosComponent } from './pages/tela-produtos/tela-produtos.component';
 import { InputComponent } from './shared/input/input.component';
 import { CardVendaComponent } from './shared/card-venda/card-venda.component';
+import { FinalizarComponent } from './shared/finalizar/finalizar.component';
+import { MainButtonComponent } from './shared/main-button/main-button.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { CardVendaComponent } from './shared/card-venda/card-venda.component';
     TelaProdutosComponent,
     InputComponent,
     CardVendaComponent,
+    FinalizarComponent,
+    MainButtonComponent,
   ],
   imports: [
     BrowserModule,
