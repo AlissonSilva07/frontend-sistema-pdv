@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCalculator } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-finalizar',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: []
 })
 export class FinalizarComponent {
-
+  faCalculator = faCalculator;
 }

@@ -5,18 +5,21 @@
     </div>
     <div class="w-[1px] h-[86px] bg-[#93A3AB]"></div>
     <div class="flex-1">
-        <table class="table-auto">
-            <tr>
-                <td class="text-base text-[#93A3AB] font-medium">Total Recebido:</td>
-                <td>
-                    <input type="text" placeholder="0,00" class="px-1 text-xl outline-none">
-                </td>
-            </tr>
-            <tr>
-                <td class="text-base text-[#93A3AB] font-medium">Troco:</td>
-                <td class="text-3xl font-medium">2,00</td>
-            </tr>
-        </table>
+        <div class="flex gap-4">
+            <div class="flex flex-col gap-2 align-top">
+                <p class="text-base text-[#93A3AB] font-medium">Total Recebido:</p>
+                <p class="text-base text-[#93A3AB] font-medium">Troco:</p>
+            </div>
+            <div class="flex flex-col gap-2 align-top">
+                <input type="text" placeholder="0,00" class="px-1 text-3xl w-20 outline-none">
+                <p class="text-3xl font-medium">2,00</p>
+            </div>
+            <div>
+                <button class="px-2 py-1 bg-[#0561FC] rounded-lg shadow-lg">
+                    <fa-icon [icon]="faCalculator" class="text-xl text-white"></fa-icon>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="flex flex-col gap-2">
         <app-main-button textoExibicao="Finalizar" cor="verdinho"></app-main-button>
