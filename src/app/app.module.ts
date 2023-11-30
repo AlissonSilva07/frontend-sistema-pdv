@@ -14,6 +14,7 @@ import { CardVendaComponent } from './shared/card-venda/card-venda.component';
 import { FinalizarComponent } from './shared/finalizar/finalizar.component';
 import { MainButtonComponent } from './shared/main-button/main-button.component';
 import { ListaDeProdutosComponent } from './shared/lista-de-produtos/lista-de-produtos.component';
+import { DetalhesDoProdutoComponent } from './shared/detalhes-do-produto/detalhes-do-produto.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ListaDeProdutosComponent } from './shared/lista-de-produtos/lista-de-pr
     FinalizarComponent,
     MainButtonComponent,
     ListaDeProdutosComponent,
+    DetalhesDoProdutoComponent,
   ],
   imports: [
     BrowserModule,
