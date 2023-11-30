@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: []
 })
 export class MainButtonComponent {
-  @Input() textoExibicao = "";
-  @Input() cor = "";
+  @Input() textoExibir = "";
+  @Input() corzinha = "";
 }
