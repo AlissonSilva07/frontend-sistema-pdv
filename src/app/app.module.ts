@@ -15,6 +15,8 @@ import { FinalizarComponent } from './shared/finalizar/finalizar.component';
 import { MainButtonComponent } from './shared/main-button/main-button.component';
 import { ListaDeProdutosComponent } from './shared/lista-de-produtos/lista-de-produtos.component';
 import { DetalhesDoProdutoComponent } from './shared/detalhes-do-produto/detalhes-do-produto.component';
+import { InputQuantidadeComponent } from './shared/input-quantidade/input-quantidade.component';
+import { ButtonIconComponent } from './shared/button-icon/button-icon.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { DetalhesDoProdutoComponent } from './shared/detalhes-do-produto/detalhe
     MainButtonComponent,
     ListaDeProdutosComponent,
     DetalhesDoProdutoComponent,
+    InputQuantidadeComponent,
+    ButtonIconComponent,
   ],
   imports: [
     BrowserModule,
