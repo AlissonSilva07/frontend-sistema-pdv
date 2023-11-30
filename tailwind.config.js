@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       colors: {
         "verdinho": "#65C565",
-        "vinho": "#C56565"
+        "vinho": "#C56565",
+        "cinza": "#93A3AB"
       }
     },
   },
