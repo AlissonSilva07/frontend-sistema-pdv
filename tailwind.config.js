@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         "verde": "#65C565",
         "vinho": "#C56565",
+        "cinza-100": "#F8FAFC",
         "cinza-400": "#93A3AB",
         "cinza-600": "#475569",
         "azul": "#0561FC",
