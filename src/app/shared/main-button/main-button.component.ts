@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class MainButtonComponent {
   @Input() textoExibir = "";
-  @Input() corzinha = "";
+  @Input() color = "";
 }
