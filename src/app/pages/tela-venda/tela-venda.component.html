@@ -1,16 +1,16 @@
-<main class="mt-14 ml-[240px] px-8 py-4 bg-cinza-100 flex flex-col gap-4 z-10">
+<main class="h-full mt-14 ml-[240px] px-8 py-4 bg-cinza-100 flex flex-col gap-4 z-10">
     <p class="text-3xl text-cinza-600 font-bold">Nova Venda</p>
-    <div class="flex flex-col gap-4 border">
+    <div class="w-full h-full flex flex-col gap-4">
         <div class="flex gap-4">
-            <div class="flex flex-col gap-4">
+            <div class="h-full flex flex-col gap-4">
                 <app-input texto="Cód. do Produto"></app-input>
-                <app-detalhes-do-produto></app-detalhes-do-produto>
+                <app-detalhes-do-produto class="h-full"></app-detalhes-do-produto>
                 <div class="flex items-center  gap-8">
                     <app-input-quantidade></app-input-quantidade>
                     <app-button-icon textoExibicao="Adicionar" cor="azul"></app-button-icon>
                 </div>
             </div>
-            <app-lista-de-produtos></app-lista-de-produtos>
+            <app-lista-de-produtos class="flex-1"></app-lista-de-produtos>
         </div>
     </div>
     <app-finalizar></app-finalizar>
