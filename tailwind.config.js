@@ -18,6 +18,7 @@ module.exports = {
         "cinza-400": "#93A3AB",
         "cinza-600": "#475569",
         "azul": "#0561FC",
+        "azul-escuro": "#03317e",
         "branco": "#ffffff"
       }
     },
