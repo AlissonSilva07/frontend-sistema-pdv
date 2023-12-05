@@ -19,6 +19,7 @@ import { DetalhesDoProdutoComponent } from './shared/detalhes-do-produto/detalhe
 import { InputQuantidadeComponent } from './shared/input-quantidade/input-quantidade.component';
 import { ButtonIconComponent } from './shared/button-icon/button-icon.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavProdutosComponent } from './shared/nav-produtos/nav-produtos.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     InputQuantidadeComponent,
     ButtonIconComponent,
     NavbarComponent,
+    NavProdutosComponent,
   ],
   imports: [
     BrowserModule,

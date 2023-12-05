@@ -10,7 +10,6 @@ const routes: Routes = [
   {path: 'vender', component: TelaVendaComponent},
   {path: 'historico', component: TelaHistoricoComponent},
   {path: 'produtos', component: TelaProdutosComponent},
-
 ];
 
 @NgModule({
