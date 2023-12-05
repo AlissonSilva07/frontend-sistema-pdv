@@ -20,6 +20,9 @@ import { InputQuantidadeComponent } from './shared/input-quantidade/input-quanti
 import { ButtonIconComponent } from './shared/button-icon/button-icon.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NavProdutosComponent } from './shared/nav-produtos/nav-produtos.component';
+import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/listar-produtos.component';
+import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
+import { PesquisarProdutosComponent } from './pages/tela-produtos/pesquisar-produtos/pesquisar-produtos.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { NavProdutosComponent } from './shared/nav-produtos/nav-produtos.compone
     ButtonIconComponent,
     NavbarComponent,
     NavProdutosComponent,
+    ListarProdutosComponent,
+    CadastrarProdutosComponent,
+    PesquisarProdutosComponent,
   ],
   imports: [
     BrowserModule,
