@@ -7,7 +7,7 @@ import { faProductHunt } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: []
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
   faHouse = faHouse;
