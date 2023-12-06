@@ -44,7 +44,7 @@ import { PesquisarProdutosComponent } from './pages/tela-produtos/pesquisar-prod
     NavProdutosComponent,
     ListarProdutosComponent,
     CadastrarProdutosComponent,
-    PesquisarProdutosComponent,
+    PesquisarProdutosComponent
   ],
   imports: [
     BrowserModule,
