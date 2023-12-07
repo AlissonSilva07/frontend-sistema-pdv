@@ -1,10 +1,10 @@
 <aside class="w-[240px] h-full fixed top-0 left-0 my-14 bg-cinza-100 flex flex-col px-8 py-6 items-start z-40">
     <div class="w-full flex flex-col items-start gap-4">
-        <button routerLink="/inicio" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
+        <button (click)="fecharSubMenuProdutos()" routerLink="/inicio" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
             <fa-icon [icon]="faHouse" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Início</p>
         </button>
-        <button routerLink="/vender" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
+        <button (click)="fecharSubMenuProdutos()" routerLink="/vender" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
             <fa-icon [icon]="faMoneyBillWave" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Vender</p>
         </button>
@@ -12,7 +12,7 @@
             <fa-icon [icon]="faCartShopping" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Histórico</p>
         </button>
-        <button (mouseover)="abrirSubMenuProdutos()" class="group w-full p-2 flex items-center gap-4 rounded-lg z-50">
+        <button (mouseover)="abrirSubMenuProdutos()" (click)="fecharSubMenuProdutos()" class="group w-full p-2 flex items-center gap-4 rounded-lg z-50">
             <fa-icon [icon]="faProductHunt" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Produtos</p>
         </button>
