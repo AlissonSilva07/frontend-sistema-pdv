@@ -14,4 +14,14 @@ export class SidebarComponent {
   faMoneyBillWave = faMoneyBillWave;
   faCartShopping = faCartShopping;
   faProductHunt = faProductHunt;
+
+  subMenuProdutosIsOpen: boolean = false;
+
+  abrirSubMenuProdutos() {
+    this.subMenuProdutosIsOpen = true;
+  }
+
+  fecharSubMenuProdutos() {
+    this.subMenuProdutosIsOpen = false;
+  }
 }

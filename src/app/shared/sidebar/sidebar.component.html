@@ -1,21 +1,32 @@
 <aside class="w-[240px] h-full fixed top-0 left-0 my-14 bg-cinza-100 flex flex-col px-8 py-6 items-start z-40">
     <div class="w-full flex flex-col items-start gap-4">
-        <button class="group w-full p-2 flex items-center gap-4 rounded-lg">
+        <button routerLink="/inicio" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
             <fa-icon [icon]="faHouse" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
-            <p class="text-sm text-cinza-400 group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Início</p>
+            <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Início</p>
         </button>
-        <button routerLink="/vender" routerLinkActive="active" class="group w-full p-2 flex items-center gap-4 rounded-lg">
+        <button routerLink="/vender" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
             <fa-icon [icon]="faMoneyBillWave" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
-            <p class="text-sm text-cinza-400 group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Vender</p>
+            <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Vender</p>
         </button>
-        <button routerLink="/historico" routerLinkActive="active" class="group w-full p-2 flex items-center gap-4 rounded-lg">
+        <button (click)="fecharSubMenuProdutos()" routerLink="/historico" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg">
             <fa-icon [icon]="faCartShopping" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
-            <p class="text-sm text-cinza-400 group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Histórico</p>
+            <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Histórico</p>
         </button>
-        <button routerLink="/produtos" class="group w-full p-2 flex items-center gap-4 rounded-lg">
+        <button (mouseover)="abrirSubMenuProdutos()" class="group w-full p-2 flex items-center gap-4 rounded-lg z-50">
             <fa-icon [icon]="faProductHunt" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
-            <p class="text-sm text-cinza-400 group-hover:text-black group-hover:font-bold group-focus:text-black group-focus:font-bold">Produtos</p>
+            <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Produtos</p>
         </button>
+        <div *ngIf="subMenuProdutosIsOpen" (mouseleave)="fecharSubMenuProdutos()" class="-mt-4 w-full bg-white flex flex-col gap-2 border rounded-lg shadow-padrao overflow-hidden z-40">
+            <a href="" class="group" routerLink="/produtos/listar">
+                <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Lista de Produtos</p>
+            </a>
+            <a href="" class="group">
+                <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Cadastrar Produtos</p>
+            </a>
+            <a href="" class="group">
+                <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Pesquisar Produtos</p>
+            </a>
+        </div>
     </div> 
     <div class="flex items-center gap-4 w-full absolute bottom-10">
         

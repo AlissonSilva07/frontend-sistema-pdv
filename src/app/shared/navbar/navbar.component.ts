@@ -13,7 +13,7 @@ export class NavbarComponent {
   menuContextoIsOpen: boolean = false;
 
   toggleMenuContexto() {
-    this.menuContextoIsOpen = !this.menuContextoIsOpen;
+    this.menuContextoIsOpen = true;
     console.log(this.menuContextoIsOpen);
   }
 
