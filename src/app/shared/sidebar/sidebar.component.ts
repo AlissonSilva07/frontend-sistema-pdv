@@ -7,11 +7,21 @@ import { faProductHunt } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: []
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
   faHouse = faHouse;
   faMoneyBillWave = faMoneyBillWave;
   faCartShopping = faCartShopping;
   faProductHunt = faProductHunt;
+
+  subMenuProdutosIsOpen: boolean = false;
+
+  abrirSubMenuProdutos() {
+    this.subMenuProdutosIsOpen = true;
+  }
+
+  fecharSubMenuProdutos() {
+    this.subMenuProdutosIsOpen = false;
+  }
 }
