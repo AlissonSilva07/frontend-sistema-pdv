@@ -23,9 +23,6 @@ import { NavProdutosComponent } from './shared/nav-produtos/nav-produtos.compone
 import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
 import { PesquisarProdutosComponent } from './pages/tela-produtos/pesquisar-produtos/pesquisar-produtos.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -53,10 +50,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatMenuModule
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
