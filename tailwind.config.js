@@ -14,9 +14,9 @@ module.exports = {
       colors: {
         "verde": "#65C565",
         "vinho": "#C56565",
-        "cinza-100": "#F8FAFC",
+        "cinza-100": "#ffffff",
         "cinza-400": "#93A3AB",
-        "cinza-600": "#475569",
+        "cinza-600": "#000000",
         "azul": "#0561FC",
         "azul-escuro": "#03317e",
         "branco": "#ffffff"
