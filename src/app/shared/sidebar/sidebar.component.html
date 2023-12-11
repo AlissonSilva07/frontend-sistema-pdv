@@ -18,14 +18,11 @@
             <fa-icon [icon]="faChevronDown" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
         </button>
         <div *ngIf="subMenuProdutosIsOpen" class="-mt-2 w-full bg-white flex flex-col border rounded-lg shadow-padrao overflow-hidden z-40">
-            <a routerLink="/produtos/listar" routerLinkActive="active2">
-                <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Lista de Produtos</p>
+            <a routerLink="/produtos/listar" routerLinkActive="active2" class="h-full p-2 hover:bg-azul-escuro text-sm text-cinza-600 hover:text-white hover:font-medium">
+                Lista de Produtos
             </a>
-            <a routerLink="/produtos/cadastrar" routerLinkActive="active2">
-                <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Cadastrar Produtos</p>
-            </a>
-            <a routerLink="/produtos/pesquisar" routerLinkActive="active2">
-                <p class="h-full p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Pesquisar Produtos</p>
+            <a routerLink="/produtos/cadastrar" routerLinkActive="active2" class="h-full p-2 hover:bg-azul-escuro text-sm text-cinza-600 hover:text-white hover:font-medium">
+                Cadastrar Produtos
             </a>
         </div>
     </div>

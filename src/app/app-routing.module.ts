@@ -6,7 +6,6 @@ import { TelaInicioComponent } from './pages/tela-inicio/tela-inicio.component';
 import { TelaProdutosComponent } from './pages/tela-produtos/tela-produtos.component';
 import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
-import { PesquisarProdutosComponent } from './pages/tela-produtos/pesquisar-produtos/pesquisar-produtos.component';
 
 const routes: Routes = [
   {path: 'inicio', component: TelaInicioComponent},
@@ -14,8 +13,7 @@ const routes: Routes = [
   {path: 'historico', component: TelaHistoricoComponent},
   {path: 'produtos', component: TelaProdutosComponent, children: [
     {path: 'listar', component: ListarProdutosComponent},
-    {path: 'cadastrar', component: CadastrarProdutosComponent},
-    {path: 'pesquisar', component: PesquisarProdutosComponent}
+    {path: 'cadastrar', component: CadastrarProdutosComponent}
   ]},
 ];
 

@@ -19,7 +19,7 @@
     font-weight: bold;
 }
 
-.active2 > p {
+.active2 {
     background-color: #0561FC;
     color: white;
 }
