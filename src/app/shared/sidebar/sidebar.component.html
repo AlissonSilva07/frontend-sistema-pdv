@@ -12,23 +12,21 @@
             <fa-icon [icon]="faCartShopping" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Histórico</p>
         </button>
-        <button (mouseover)="abrirSubMenuProdutos()" (click)="fecharSubMenuProdutos()" class="group w-full p-2 flex items-center gap-4 rounded-lg z-50">
+        <button (click)="toggleSubMenuProdutos()" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg z-50">
             <fa-icon [icon]="faProductHunt" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Produtos</p>
+            <fa-icon [icon]="faChevronDown" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
         </button>
-        <div *ngIf="subMenuProdutosIsOpen" (mouseleave)="fecharSubMenuProdutos()" class="-mt-4 w-full bg-white flex flex-col gap-2 border rounded-lg shadow-padrao overflow-hidden z-40">
-            <a href="" class="group" routerLink="/produtos/listar">
+        <div *ngIf="subMenuProdutosIsOpen" class="-mt-2 w-full bg-white flex flex-col border rounded-lg shadow-padrao overflow-hidden z-40">
+            <a routerLink="/produtos/listar" routerLinkActive="active2">
                 <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Lista de Produtos</p>
             </a>
-            <a href="" class="group">
+            <a routerLink="/produtos/cadastrar" routerLinkActive="active2">
                 <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Cadastrar Produtos</p>
             </a>
-            <a href="" class="group">
-                <p class="p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Pesquisar Produtos</p>
+            <a routerLink="/produtos/pesquisar" routerLinkActive="active2">
+                <p class="h-full p-2 group-hover:bg-azul text-sm text-cinza-600 group-hover:text-white group-hover:font-medium">Pesquisar Produtos</p>
             </a>
         </div>
-    </div> 
-    <div class="flex items-center gap-4 w-full absolute bottom-10">
-        
     </div>
 </aside>

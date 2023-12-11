@@ -15,6 +15,11 @@
 }
 
 .active-botao > p {
-    color: #475569;
+    color: black;
     font-weight: bold;
+}
+
+.active2 > p {
+    background-color: #0561FC;
+    color: white;
 }
