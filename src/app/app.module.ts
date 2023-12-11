@@ -23,6 +23,7 @@ import { NavProdutosComponent } from './shared/nav-produtos/nav-produtos.compone
 import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopupExcluirComponent } from './shared/popup-excluir/popup-excluir.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     NavProdutosComponent,
     ListarProdutosComponent,
-    CadastrarProdutosComponent
+    CadastrarProdutosComponent,
+    PopupExcluirComponent
   ],
   imports: [
     BrowserModule,

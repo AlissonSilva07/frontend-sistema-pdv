@@ -1,3 +1,36 @@
 <main class="w-screen h-screen pt-20 pb-14 pl-[242px] p-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <p class="text-2xl text-cinza-600 font-bold">Lista de Produtos</p>
+    <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border">
+        <table class="table-auto text-center w-full">
+            <tr class="text-sm text-white bg-cinza-400">
+                <td>Selec.</td>
+                <td>Dt. de Criação</td>
+                <td>Código</td>
+                <td>Descrição</td>
+                <td>Categoria</td>                
+                <td>Valor Unit.</td>
+                <td>Ações</td>
+            </tr>
+            <tr class="text-sm text-cinza-600 font-medium">
+                <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>11/12/2023</td>
+                <td>OB2455</td>
+                <td>Biscoito de Leite</td>
+                <td>Cereais</td>
+                <td>1,50</td>
+                <td class="flex items-center gap-4 justify-center">
+                    <button class="p-1" (click)="abrirDialogo()">
+                        <fa-icon [icon]="faTrash" class="hover:text-vinho"></fa-icon>
+                    </button>
+                    <button class="p-1">
+                        <fa-icon [icon]="faEdit" class="hover:text-verde"></fa-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </main>
+
+<app-popup-excluir [popUp]=openPopUp></app-popup-excluir>

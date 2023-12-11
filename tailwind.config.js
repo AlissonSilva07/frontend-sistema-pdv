@@ -19,7 +19,8 @@ module.exports = {
         "cinza-600": "#000000",
         "azul": "#0561FC",
         "azul-escuro": "#03317e",
-        "branco": "#ffffff"
+        "branco": "#ffffff",
+        "esmaecido": "rgba(0, 0, 0, 0.7)"
       }
     },
   },
