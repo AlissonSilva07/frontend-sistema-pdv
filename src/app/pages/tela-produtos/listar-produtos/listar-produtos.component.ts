@@ -16,4 +16,8 @@ export class ListarProdutosComponent {
   abrirDialogo() {
     this.openPopUp = true;
   }
+
+  fecharDialogo() {
+    this.openPopUp = false;
+  }
 }

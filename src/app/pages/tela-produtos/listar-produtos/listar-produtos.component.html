@@ -33,4 +33,4 @@
     </div>
 </main>
 
-<app-popup-excluir [popUp]=openPopUp></app-popup-excluir>
+<app-popup-excluir [popUpOpen]=openPopUp (popUpClose)="fecharDialogo()"></app-popup-excluir>

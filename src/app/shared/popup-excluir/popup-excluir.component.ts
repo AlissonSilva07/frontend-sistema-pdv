@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,5 +9,10 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 export class PopupExcluirComponent {
   faClose = faClose;
 
-  @Input() popUp: boolean = false;
+  @Input() popUpOpen: boolean = false;
+  @Output() popUpClose = new EventEmitter<boolean>();
+
+  fecharDialogo() {
+    this.popUpClose.emit(false);
+  }
 }
