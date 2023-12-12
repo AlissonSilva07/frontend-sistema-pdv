@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-listar-produtos',
@@ -10,6 +10,7 @@ import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 export class ListarProdutosComponent {
   faTrash = faTrash;
   faEdit = faEdit;
+  faTrashCan = faTrashCan;
 
   openPopUp: boolean = false;
 
