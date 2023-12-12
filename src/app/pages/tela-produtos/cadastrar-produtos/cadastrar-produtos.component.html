@@ -1,3 +1,29 @@
 <main class="w-screen h-screen pt-20 pb-14 pl-[242px] p-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <p class="text-2xl text-cinza-600 font-bold">Cadastrar Produtos</p>
+    <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
+        <div class="h-full">
+            <form [formGroup]="produtoForm" class="flex flex-col items-center gap-4">
+                <div class="flex flex-col gap-2">
+                    <label for="titulo" class="text-sm font-bold">Título</label>
+                    <input id="titulo" type="text" formControlName="titulo" class="p-2 outline-none border-2 border-azul rounded-xl">
+                </div>
+                <div class="w-full flex flex-col gap-2">
+                    <label for="categoriaSelect" class="text-sm font-bold">Categoria</label>
+                    <select class="form-control" id="categoriaSelect" class="w-full p-2 outline-none text-sm border-2 border-azul rounded-xl">
+                        <option *ngFor="let c of categoria" [value]="c" class="text-sm">{{c}}</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="valorUnitario" class="text-sm font-bold">Valor Unitário</label>
+                    <input id="valorUnitario" type="number" formControlName="valorUnitario" class="p-2 outline-none border-2 border-azul rounded-xl">
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <app-main-button textoExibir="Criar" color="bg-verde"></app-main-button>
+                    <app-main-button textoExibir="Limpar" color="bg-vinho"></app-main-button>
+                </div>
+            </form>
+        </div>
+        <div></div>
+    </div>
 </main>
