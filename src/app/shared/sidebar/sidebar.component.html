@@ -17,7 +17,7 @@
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-bold group-focus:text-cinza-600 group-focus:font-bold">Produtos</p>
             <fa-icon [icon]="faChevronDown" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
         </button>
-        <div *ngIf="subMenuProdutosIsOpen" class="-mt-2 w-full bg-white flex flex-col border rounded-lg shadow-padrao overflow-hidden z-40">
+        <div *ngIf="subMenuProdutosIsOpen" class="-mt-2 w-full bg-white flex flex-col border rounded-lg shadow-padrao transition-all ease-in delay-75 overflow-hidden z-40">
             <a routerLink="/produtos/listar" routerLinkActive="active2" class="h-full p-2 hover:bg-azul-escuro text-sm text-cinza-600 hover:text-white hover:font-medium">
                 Lista de Produtos
             </a>

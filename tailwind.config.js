@@ -5,12 +5,11 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'short': { 'raw': '(max-height: 768px)'}
+      'short': { 'raw': '(max-height: 768px)'},
+      'laptop': '1024px',
+      'desktop': '1280px'
     },
     extend: {
-      backgroundImage: {
-        "listras": "background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#0561FC 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #0561FC 2px, #ffffff 2px) -1px 0;"
-      },
       boxShadow: {
         'padrao': '0px 1px 3px 0px rgba(0, 0, 0, 0.10)',
       },
