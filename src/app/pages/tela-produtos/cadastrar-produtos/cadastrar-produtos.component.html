@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="w-full flex items-center gap-4 justify-between">
-                    <app-main-button textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
+                    <app-main-button (click)="abrirDialogoIncluir()" textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
                     <app-main-button textoExibir="Limpar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
                 </div>
             </form>
@@ -36,3 +36,5 @@
         </div>
     </div>
 </main>
+
+<app-popup-incluir [popUpIncluirOpen]=openPopUpIncluir (popUpIncluirClose)="fecharDialogoIncluir()"></app-popup-incluir>

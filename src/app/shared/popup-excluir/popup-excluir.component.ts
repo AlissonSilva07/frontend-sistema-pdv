@@ -9,10 +9,10 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 export class PopupExcluirComponent {
   faClose = faClose;
 
-  @Input() popUpOpen: boolean = false;
-  @Output() popUpClose = new EventEmitter<boolean>();
+  @Input() popUpExcluirOpen: boolean = false;
+  @Output() popUpExcluirClose = new EventEmitter<boolean>();
 
   fecharDialogo() {
-    this.popUpClose.emit(false);
+    this.popUpExcluirClose.emit(false);
   }
 }

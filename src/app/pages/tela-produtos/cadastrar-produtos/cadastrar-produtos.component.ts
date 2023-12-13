@@ -7,6 +7,16 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: []
 })
 export class CadastrarProdutosComponent {
+  openPopUpIncluir: boolean = false;
+
+  abrirDialogoIncluir() {
+    this.openPopUpIncluir = true;
+  }
+
+  fecharDialogoIncluir() {
+    this.openPopUpIncluir = false;
+  }
+  
   categoria = ['Cereais', 'Bebidas', 'Carnes'];
 
   produtoForm = new FormGroup({

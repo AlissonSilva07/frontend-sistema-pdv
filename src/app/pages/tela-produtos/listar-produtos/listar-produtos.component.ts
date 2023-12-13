@@ -12,13 +12,13 @@ export class ListarProdutosComponent {
   faEdit = faEdit;
   faTrashCan = faTrashCan;
 
-  openPopUp: boolean = false;
+  openPopUpExcluir: boolean = false;
 
-  abrirDialogo() {
-    this.openPopUp = true;
+  abrirDialogoExcluir() {
+    this.openPopUpExcluir = true;
   }
 
-  fecharDialogo() {
-    this.openPopUp = false;
+  fecharDialogoExcluir() {
+    this.openPopUpExcluir = false;
   }
 }
