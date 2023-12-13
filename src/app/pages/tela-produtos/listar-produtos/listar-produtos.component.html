@@ -1,11 +1,11 @@
-<main class="w-screen h-screen pt-20 pb-14 pl-[242px] p-8 bg-cinza-100 flex flex-col gap-4 z-10">
+<main class="w-screen h-screen pt-20 pb-14 pl-[272px] p-8 bg-branco flex flex-col gap-4 z-10">
     <div class="flex items-center justify-between">
         <p class="text-2xl text-cinza-600 font-bold">Lista de Produtos</p>
         <app-input texto="Cód. do Produto"></app-input>
     </div>
     <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
         <table class="table-auto text-center w-full">
-            <tr class="text-sm text-white bg-cinza-400">
+            <tr class="text-sm text-white bg-roxo">
                 <td>Selec.</td>
                 <td>Dt. de Criação</td>
                 <td>Código</td>
@@ -25,7 +25,7 @@
                 <td>1,50</td>
                 <td class="flex items-center gap-4 justify-center">
                     <button class="p-1" (click)="abrirDialogo()">
-                        <fa-icon [icon]="faTrash" class="hover:text-vinho"></fa-icon>
+                        <fa-icon [icon]="faTrash" class="hover:text-vermelho"></fa-icon>
                     </button>
                     <button class="p-1">
                         <fa-icon [icon]="faEdit" class="hover:text-verde"></fa-icon>
@@ -33,7 +33,7 @@
                 </td>
             </tr>
         </table>
-        <app-main-button class="absolute bottom-4 right-4" textoExibir="Deletar Selec." color="bg-vinho"></app-main-button>
+        <app-main-button class="absolute bottom-4 right-4" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
     </div>
 </main>
 

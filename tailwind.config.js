@@ -9,17 +9,20 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        'padrao': '0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10)',
+        'padrao': '0px 1px 3px 0px rgba(0, 0, 0, 0.10)',
       },
       colors: {
-        "verde": "#65C565",
-        "vinho": "#C56565",
-        "cinza-100": "#ffffff",
+        "verde": "#059669",
+        "vermelho": "#FF4242",
+        "cinza-100": "#F9F8F6",
+        "cinza-200": "#D4D1CA",
         "cinza-400": "#93A3AB",
         "cinza-600": "#000000",
         "azul": "#0561FC",
         "azul-escuro": "#03317e",
+        "amarelo": "#FFBB12",
         "branco": "#ffffff",
+        "roxo": "#612F74",
         "esmaecido": "rgba(0, 0, 0, 0.7)"
       }
     },
