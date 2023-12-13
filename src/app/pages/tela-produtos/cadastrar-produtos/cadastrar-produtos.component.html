@@ -1,11 +1,11 @@
 <main class="w-screen h-screen pt-20 pb-14 pl-[272px] p-8 bg-branco flex flex-col gap-4 z-10">
     <p class="text-2xl text-cinza-600 font-bold">Cadastrar Produtos</p>
     <div class="w-full h-full flex items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
-        <div class="h-full p-4 rounded-l-lg border">
+        <div class="h-full w-2/6 p-4 rounded-l-lg">
             <form [formGroup]="produtoForm" class="flex flex-col items-center gap-4">
-                <div class="flex flex-col gap-2">
+                <div class="w-full flex flex-col gap-2">
                     <label for="titulo" class="text-sm font-bold">Título</label>
-                    <input id="titulo" type="text" formControlName="titulo" class="p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <input id="titulo" type="text" formControlName="titulo" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
@@ -20,19 +20,19 @@
                     <textarea id="descricao" formControlName="descricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
                 </div>
 
-                <div class="flex flex-col gap-2">
+                <div class="w-full flex flex-col gap-2">
                     <label for="valorUnitario" class="text-sm font-bold">Valor Unitário</label>
-                    <input id="valorUnitario" type="number" formControlName="valorUnitario" class="p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <input id="valorUnitario" type="number" formControlName="valorUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
                 </div>
 
                 <div class="w-full flex items-center gap-4 justify-between">
-                    <app-main-button textoExibir="Criar" bgCor="bg-verde" textoCor="text-branco" class="flex-1"></app-main-button>
+                    <app-main-button textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
                     <app-main-button textoExibir="Limpar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
                 </div>
             </form>
         </div>
-        <div class="h-full p-4 flex-1 rounded-r-lg border">
-            ee
+        <div class="h-full p-4 flex-1 rounded-r-lg overflow-hidden">
+            <img src="./assets/product.svg" width="400" class="mx-auto">
         </div>
     </div>
 </main>

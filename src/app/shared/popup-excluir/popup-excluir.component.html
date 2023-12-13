@@ -3,8 +3,8 @@
 		<p class="text-xl font-medium">Deseja excluir esse produto?</p>
         <p class="text-cinza-400 text-sm">Essa ação não poderá ser desfeita.</p>
         <div class="flex items-center gap-4">
-            <app-main-button textoExibir="Sim" color="bg-azul"></app-main-button>
-            <app-main-button textoExibir="Não" color="bg-vinho" (click)="fecharDialogo()"></app-main-button>
+            <app-main-button textoExibir="Sim" bgCor="bg-azul" textoCor="text-branco"></app-main-button>
+            <app-main-button textoExibir="Não" bgCor="bg-vermelho" textoCor="text-branco" (click)="fecharDialogo()"></app-main-button>
         </div>
 		<button (click)="fecharDialogo()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
             <fa-icon [icon]="faClose"></fa-icon>
