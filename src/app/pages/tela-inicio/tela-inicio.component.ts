@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: []
 })
 export class TelaInicioComponent {
-
+  vendedor: string = 'Juliano Yang';
 }
