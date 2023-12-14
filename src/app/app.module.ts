@@ -24,6 +24,8 @@ import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-prod
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopupExcluirComponent } from './shared/popup-excluir/popup-excluir.component';
 import { PopupIncluirComponent } from './shared/popup-incluir/popup-incluir.component';
+import { VendasHojeComponent } from './shared/vendas-hoje/vendas-hoje.component';
+import { VendasMaisVendidosComponent } from './shared/vendas-mais-vendidos/vendas-mais-vendidos.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { PopupIncluirComponent } from './shared/popup-incluir/popup-incluir.comp
     ListarProdutosComponent,
     CadastrarProdutosComponent,
     PopupExcluirComponent,
-    PopupIncluirComponent
+    PopupIncluirComponent,
+    VendasHojeComponent,
+    VendasMaisVendidosComponent
   ],
   imports: [
     BrowserModule,
