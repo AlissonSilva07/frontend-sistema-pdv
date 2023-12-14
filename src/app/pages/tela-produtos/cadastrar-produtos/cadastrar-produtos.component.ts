@@ -51,6 +51,7 @@ export class CadastrarProdutosComponent implements OnInit {
 
   onSubmit() {
     this.produtoForm.valid ? this.abrirDialogoIncluir() : alert("Todos os campos precisam estar preenchidos");
+    this.resetForm();
   }
 
 }

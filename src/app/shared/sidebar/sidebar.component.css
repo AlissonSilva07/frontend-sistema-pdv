@@ -5,18 +5,18 @@
     gap: 16px;
     border-radius: 8px;
     padding: 8px;
-    background-color: white;
+    background-color: #0561FC;
     box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10);
     font-size: 14px;
 }
 
 .active-botao > fa-icon {
-    color: #0561FC;
+    color: #ffffff;
 }
 
 .active-botao > p {
-    color: black;
-    font-weight: bold;
+    color: #ffffff;
+    font-weight: medium;
 }
 
 .active2 {
