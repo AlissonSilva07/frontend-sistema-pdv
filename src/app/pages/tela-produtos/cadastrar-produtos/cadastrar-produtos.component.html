@@ -2,32 +2,46 @@
     <p class="text-2xl text-cinza-600 font-bold">Cadastrar Produtos</p>
     <div class="w-full h-auto flex items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
         <div class="h-full w-2/6 p-4 rounded-l-lg">
-            <form [formGroup]="produtoForm" class="flex flex-col items-center gap-4">
+            <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()" class="flex flex-col items-center gap-4">
                 <div class="w-full flex flex-col gap-2">
                     <label for="titulo" class="text-sm font-bold">Título</label>
-                    <input id="titulo" type="text" formControlName="titulo" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <input id="titulo" type="text" formControlName="titulo" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
+                    <div *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
+                        <div *ngIf="titulo?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                        <div *ngIf="titulo?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 9 caracteres.</div>
+                    </div>
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
                     <label for="categoriaSelect" class="text-sm font-bold">Categoria</label>
-                    <select class="form-control" id="categoriaSelect" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
-                        <option *ngFor="let c of categoria" [value]="c" class="text-sm">{{c}}</option>
+                    <select class="form-control" id="categoriaSelect" formControlName="categoriaSelect" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                        <option *ngFor="let c of categoria" [ngValue]="c" class="text-sm">{{c}}</option>
                     </select>
+                    <div *ngIf="categoriaSelect?.invalid && (categoriaSelect?.dirty || categoriaSelect?.touched)">
+                        <div *ngIf="categoriaSelect?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
+                    </div>
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
                     <label for="descricao" class="text-sm font-bold">Descrição</label>
                     <textarea id="descricao" formControlName="descricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
+                    <div *ngIf="descricao?.invalid && (descricao?.dirty || descricao?.touched)">
+                        <div *ngIf="descricao?.errors?.['maxlength']" class="text-xs text-vermelho">Máximo de 100 caracteres.</div>
+                    </div>
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
                     <label for="valorUnitario" class="text-sm font-bold">Valor Unitário</label>
                     <input id="valorUnitario" type="number" formControlName="valorUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <div *ngIf="valorUnitario?.invalid && (valorUnitario?.dirty || valorUnitario?.touched)">
+                        <div *ngIf="valorUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                        <div *ngIf="valorUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
+                    </div>
                 </div>
 
                 <div class="w-full flex items-center gap-4 justify-between">
-                    <app-main-button (click)="abrirDialogoIncluir()" textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
-                    <app-main-button textoExibir="Limpar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
+                    <app-main-button textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
+                    <app-main-button (click)="resetForm()" textoExibir="Limpar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
                 </div>
             </form>
         </div>
