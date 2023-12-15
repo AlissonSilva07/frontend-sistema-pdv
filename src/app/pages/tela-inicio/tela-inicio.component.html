@@ -1,7 +1,19 @@
 <main class="w-full h-screen pt-20 pb-14 pl-[272px] pr-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <p class="text-2xl text-cinza-600 font-bold">Início</p>
-    <div class="w-full flex items-center gap-4">
-        <app-vendas-hoje></app-vendas-hoje>
-        <app-vendas-mais-vendidos></app-vendas-mais-vendidos>
+    <div class="flex flex-col gap-4">
+        <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border">
+            <p class="text-xl font-bold">{{mensagemCompleta}}</p>
+            <p class="text-xl">O que gostaria de fazer hoje?</p>
+            <div class="flex items-center gap-4">
+                <app-main-button bgCor="bg-branco" textoCor="text-azul" textoExibir="Fazer uma venda" borda="border border-azul"></app-main-button>
+                <app-main-button bgCor="bg-branco" textoCor="text-azul" textoExibir="Consultar vendas" borda="border border-azul"></app-main-button>
+                <app-main-button bgCor="bg-branco" textoCor="text-azul" textoExibir="Listar os produtos" borda="border border-azul"></app-main-button>
+                <app-main-button bgCor="bg-branco" textoCor="text-azul" textoExibir="Cadastrar um produto" borda="border border-azul"></app-main-button>
+            </div>
+        </div>
+        <div class="w-full flex items-center gap-4">
+            <app-vendas-hoje></app-vendas-hoje>
+            <app-vendas-mais-vendidos></app-vendas-mais-vendidos>
+        </div>
     </div>
 </main>

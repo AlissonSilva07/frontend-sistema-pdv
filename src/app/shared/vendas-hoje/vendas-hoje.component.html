@@ -1,26 +1,26 @@
 <div class="w-full h-full flex flex-col items-start p-4 gap-4 bg-white rounded-xl shadow-padrao border">
-    <p class="">Vendas de Hoje</p>
-    <div class="flex items-center gap-2">
-        <div class="w-full h-full bg-red-200 p-2 flex flex-col items-start rounded-lg">
-            <span class="bg-vermelho py-1 px-2 rounded-full">
+    <p class="text-xl font-medium">Vendas de Hoje</p>
+    <div class="flex items-center gap-4">
+        <div class="bg-red-200 p-4 flex flex-col items-center gap-2 rounded-lg">
+            <span class="bg-vermelho w-10 h-10 flex flex-col items-center justify-center rounded-full">
                 <fa-icon [icon]="faDollarSign" class="text-xl text-branco"></fa-icon>
             </span>
-            <p>R$30,00</p>
-            <p>Total vendido</p>
+            <p class="text-xl font-bold text-roxo">R$30,00</p>
+            <p class="text-sm font-medium">Total Vendido</p>
         </div>
-        <div class="w-full h-full bg-lime-200 p-2 flex flex-col items-start rounded-lg">
-            <span class="bg-verde py-1 px-2 rounded-full">
+        <div class="flex-1 bg-lime-200 p-4 flex flex-col items-center gap-2 rounded-lg">
+            <span class="bg-verde w-10 h-10 flex flex-col items-center justify-center rounded-full">
                 <fa-icon [icon]="faSheetPlastic" class="text-xl text-branco"></fa-icon>
             </span>
-            <p>R$30,00</p>
-            <p>Vendas no total</p>
+            <p class="text-xl font-bold text-roxo">5</p>
+            <p class="text-sm font-medium">Nº de Vendas</p>
         </div>
-        <div class="w-full h-full bg-orange-200 p-2 flex flex-col items-start rounded-lg">
-            <span class="bg-amarelo py-1 px-2 rounded-full">
+        <div class="bg-amber-200 p-4 flex flex-col items-center gap-2 rounded-lg">
+            <span class="bg-amarelo w-10 h-10 flex flex-col items-center justify-center rounded-full">
                 <fa-icon [icon]="faTag" class="text-xl text-branco"></fa-icon>
             </span>
-            <p>R$30,00</p>
-            <p>Produtos vendidos</p>
+            <p class="text-xl font-bold text-roxo">10</p>
+            <p class="text-sm font-medium">Total Produtos</p>
         </div>
     </div>
 </div>
