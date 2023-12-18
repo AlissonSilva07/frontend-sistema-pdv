@@ -26,6 +26,7 @@ import { PopupExcluirComponent } from './shared/popup-excluir/popup-excluir.comp
 import { PopupIncluirComponent } from './shared/popup-incluir/popup-incluir.component';
 import { VendasHojeComponent } from './shared/vendas-hoje/vendas-hoje.component';
 import { VendasMaisVendidosComponent } from './shared/vendas-mais-vendidos/vendas-mais-vendidos.component';
+import { UltimasVendasComponent } from './shared/ultimas-vendas/ultimas-vendas.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { VendasMaisVendidosComponent } from './shared/vendas-mais-vendidos/venda
     PopupExcluirComponent,
     PopupIncluirComponent,
     VendasHojeComponent,
-    VendasMaisVendidosComponent
+    VendasMaisVendidosComponent,
+    UltimasVendasComponent
   ],
   imports: [
     BrowserModule,

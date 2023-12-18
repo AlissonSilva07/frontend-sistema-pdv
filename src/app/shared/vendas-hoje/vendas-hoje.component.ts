@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { faDollarSign, faSheetPlastic, faTag } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign, faSheetPlastic, faTag, faPerson } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vendas-hoje',
@@ -11,4 +11,5 @@ export class VendasHojeComponent {
   faDollarSign = faDollarSign;
   faSheetPlastic = faSheetPlastic;
   faTag = faTag;
+  faPerson = faPerson;
 }
