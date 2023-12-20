@@ -15,6 +15,7 @@
                 <div class="w-full flex flex-col gap-2">
                     <label for="categoriaSelect" class="text-sm font-bold">Categoria</label>
                     <select class="form-control" id="categoriaSelect" formControlName="categoriaSelect" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                        <option value="" selected disabled hidden>Selecione uma das opções</option>
                         <option *ngFor="let c of categoria" [ngValue]="c" class="text-sm">{{c}}</option>
                     </select>
                     <div *ngIf="categoriaSelect?.invalid && (categoriaSelect?.dirty || categoriaSelect?.touched)">

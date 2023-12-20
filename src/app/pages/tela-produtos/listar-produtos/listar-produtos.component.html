@@ -9,20 +9,22 @@
                 <td>Selec.</td>
                 <td>Dt. de Criação</td>
                 <td>Código</td>
-                <td>Descrição</td>
-                <td>Categoria</td>                
+                <td>Nome</td>
+                <td>Categoria</td>
+                <td>Descrição</td>                
                 <td>Valor Unit.</td>
                 <td>Ações</td>
             </tr>
-            <tr class="text-sm text-cinza-600 font-medium">
+            <tr *ngFor="let produto of produtos" class="text-sm text-cinza-600 font-medium">
                 <td>
                     <input type="checkbox" name="" id="">
                 </td>
-                <td>11/12/2023</td>
-                <td>OB2455</td>
-                <td>Biscoito de Leite</td>
-                <td>Cereais</td>
-                <td>1,50</td>
+                <td>{{ produto.dataCriacao }}</td>
+                <td>{{ produto.idProduto }}</td>
+                <td>{{ produto.nomeProduto }}</td>
+                <td>{{ produto.categoria }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.valUnitario }}</td>
                 <td class="flex items-center gap-4 justify-center">
                     <button class="p-1" (click)="abrirDialogoExcluir()">
                         <fa-icon [icon]="faTrash" class="hover:text-vermelho transition-all delay-75 ease-in"></fa-icon>

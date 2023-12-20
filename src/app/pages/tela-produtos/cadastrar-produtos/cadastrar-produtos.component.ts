@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
   selector: 'app-cadastrar-produtos',
@@ -7,10 +8,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: []
 })
 export class CadastrarProdutosComponent implements OnInit {
-  
-  ngOnInit(): void {  }
 
-  categoria = ['Cereais', 'Bebidas', 'Carnes'];
+  categoria?: string[] = [];
+
+  constructor(private productService: ProdutoService) {}
+  
+  ngOnInit(): void { 
+    this.todasCategorias();
+   }
+
+  todasCategorias(): void {
+    this.productService.todasCategorias()
+    .subscribe({
+      next: data => {
+        this.categoria = data;
+        console.log(data);
+      },
+      error: e => console.log(e)
+    })
+  }
 
   produtoForm = new FormGroup({
     titulo: new FormControl('', [Validators.required, Validators.minLength(8)]),
