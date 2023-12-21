@@ -4,5 +4,5 @@ export class Produto {
     nomeProduto?: string;
     categoria?: string;
     descricao?: string;
-    valUnitario?: number
+    valUnitario?: number;
 }

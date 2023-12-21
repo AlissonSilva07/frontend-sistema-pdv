@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class CadastrarProdutosComponent implements OnInit {
 
-  categoria?: string[] = [];
+  listaCategoria?: string[] = [];
 
   constructor(private productService: ProdutoService) {}
   
@@ -21,34 +22,45 @@ export class CadastrarProdutosComponent implements OnInit {
     this.productService.todasCategorias()
     .subscribe({
       next: data => {
-        this.categoria = data;
+        this.listaCategoria = data;
         console.log(data);
       },
       error: e => console.log(e)
     })
   }
 
-  produtoForm = new FormGroup({
-    titulo: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    categoriaSelect: new FormControl('', Validators.required),
-    descricao: new FormControl('', Validators.maxLength(100)),
-    valorUnitario: new FormControl('', [Validators.required, Validators.min(0.01)])
-  })
-
-  get titulo() {
-    return this.produtoForm.get('titulo');
+  salvarProduto(): void {
+    var data = this.produtoForm.value;
+    this.productService.postarProduto(data)
+    .subscribe({
+      next: res => {
+        console.log(res);
+      },
+      error: e => console.log(e)
+    })
   }
 
-  get categoriaSelect() {
-    return this.produtoForm.get('categoriaSelect');
+  produtoForm = new FormGroup({
+    nomeProduto: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    categoria: new FormControl('', Validators.required),
+    descricao: new FormControl('', Validators.maxLength(100)),
+    valUnitario: new FormControl('', [Validators.required, Validators.min(0.01)])
+  })
+
+  get nomeProduto() {
+    return this.produtoForm.get('nomeProduto');
+  }
+
+  get categoria() {
+    return this.produtoForm.get('categoria');
   }
 
   get descricao() {
     return this.produtoForm.get('descricao');
   }
 
-  get valorUnitario() {
-    return this.produtoForm.get('valorUnitario');
+  get valUnitario() {
+    return this.produtoForm.get('valUnitario');
   }
 
   openPopUpIncluir: boolean = false;
@@ -66,8 +78,13 @@ export class CadastrarProdutosComponent implements OnInit {
   }
 
   onSubmit() {
-    this.produtoForm.valid ? this.abrirDialogoIncluir() : alert("Todos os campos precisam estar preenchidos");
-    this.resetForm();
+    try {
+      this.produtoForm.valid ? this.abrirDialogoIncluir() : alert("Todos os campos precisam estar preenchidos");
+      this.salvarProduto()
+      this.resetForm();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
 }

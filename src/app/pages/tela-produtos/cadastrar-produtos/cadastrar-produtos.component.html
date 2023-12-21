@@ -4,22 +4,22 @@
         <div class="h-full w-2/6 p-4 rounded-l-lg">
             <form [formGroup]="produtoForm" class="flex flex-col items-center gap-4">
                 <div class="w-full flex flex-col gap-2">
-                    <label for="titulo" class="text-sm font-bold">Título</label>
-                    <input id="titulo" type="text" formControlName="titulo" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
-                    <div *ngIf="titulo?.invalid && (titulo?.dirty || titulo?.touched)">
-                        <div *ngIf="titulo?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
-                        <div *ngIf="titulo?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 9 caracteres.</div>
+                    <label for="nomeProduto" class="text-sm font-bold">Título</label>
+                    <input id="nomeProduto" type="text" formControlName="nomeProduto" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
+                    <div *ngIf="nomeProduto?.invalid && (nomeProduto?.dirty || nomeProduto?.touched)">
+                        <div *ngIf="nomeProduto?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                        <div *ngIf="nomeProduto?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 6 caracteres.</div>
                     </div>
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="categoriaSelect" class="text-sm font-bold">Categoria</label>
-                    <select class="form-control" id="categoriaSelect" formControlName="categoriaSelect" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <label for="categoria" class="text-sm font-bold">Categoria</label>
+                    <select class="form-control" id="categoria" formControlName="categoria" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
                         <option value="" selected disabled hidden>Selecione uma das opções</option>
-                        <option *ngFor="let c of categoria" [ngValue]="c" class="text-sm">{{c}}</option>
+                        <option *ngFor="let c of listaCategoria" [ngValue]="c" class="text-sm">{{c}}</option>
                     </select>
-                    <div *ngIf="categoriaSelect?.invalid && (categoriaSelect?.dirty || categoriaSelect?.touched)">
-                        <div *ngIf="categoriaSelect?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
+                    <div *ngIf="categoria?.invalid && (categoria?.dirty || categoria?.touched)">
+                        <div *ngIf="categoria?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
                     </div>
                 </div>
 
@@ -32,11 +32,11 @@
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="valorUnitario" class="text-sm font-bold">Valor Unitário</label>
-                    <input id="valorUnitario" type="number" formControlName="valorUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
-                    <div *ngIf="valorUnitario?.invalid && (valorUnitario?.dirty || valorUnitario?.touched)">
-                        <div *ngIf="valorUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
-                        <div *ngIf="valorUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
+                    <label for="valUnitario" class="text-sm font-bold">Valor Unitário</label>
+                    <input id="valUnitario" type="number" formControlName="valUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <div *ngIf="valUnitario?.invalid && (valUnitario?.dirty || valUnitario?.touched)">
+                        <div *ngIf="valUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                        <div *ngIf="valUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
                     </div>
                 </div>
 

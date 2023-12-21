@@ -24,7 +24,7 @@ export class ProdutoService {
     return this.http.get<Produto>(`${environment.baseUrl}/buscar/${id}`);
   }
 
-  postarProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(`${environment.baseUrl}/postar`, produto);
+  postarProduto(produto: any): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/postar`, produto);
   }
 }

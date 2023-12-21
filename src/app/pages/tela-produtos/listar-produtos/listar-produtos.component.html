@@ -4,7 +4,13 @@
         <app-input texto="Cód. do Produto"></app-input>
     </div>
     <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
-        <table class="table-auto text-center w-full">
+        <ng-template #elseBlock>
+            <div class="mx-auto my-auto flex flex-col items-center gap-4">
+                <fa-icon [icon]="faFaceSadTear" class="text-cinza-400 text-3xl"></fa-icon>
+                <p class="text-cinza-400 text-sm">Nenhum produto foi cadastrado ainda.</p>
+            </div>
+        </ng-template>
+        <table *ngIf="produtos?.length; else elseBlock" class="table-auto text-center w-full">
             <tr class="text-sm text-white bg-roxo">
                 <td>Selec.</td>
                 <td>Dt. de Criação</td>

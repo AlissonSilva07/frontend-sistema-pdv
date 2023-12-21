@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { faTrash, faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan, faFaceSadTear } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -31,13 +31,13 @@ export class ListarProdutosComponent {
     });
   }
 
-  
-
-
+  //Ícones usados
+  faFaceSadTear = faFaceSadTear;
   faTrash = faTrash;
   faEdit = faEdit;
   faTrashCan = faTrashCan;
 
+  //Controles de popup
   openPopUpExcluir: boolean = false;
 
   abrirDialogoExcluir() {
