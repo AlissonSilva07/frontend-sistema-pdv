@@ -14,6 +14,9 @@ export class NavbarComponent {
 
   abrirMenuContexto() {
     this.menuContextoIsOpen = true;
+    setTimeout(() => {
+      this.menuContextoIsOpen = false;
+    }, 2000)
   }
 
   fecharMenuContexto() {

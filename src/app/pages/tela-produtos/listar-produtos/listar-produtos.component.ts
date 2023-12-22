@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose } from '@fortawesome/free-solid-svg-icons';
@@ -13,11 +14,13 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class ListarProdutosComponent {
 
   produtos?: Produto[];
+  listaCategoria?: string[] = [];
 
   constructor(private produtoService: ProdutoService, private router: Router) {}
 
   ngOnInit(): void {
     this.listarProdutos();
+    this.todasCategorias();
   }
 
   //Lista de Produtos
@@ -29,6 +32,18 @@ export class ListarProdutosComponent {
       },
       error: e => console.log(e)
     });
+  }
+
+  //Lista de Categorias
+  todasCategorias(): void {
+    this.produtoService.todasCategorias()
+    .subscribe({
+      next: data => {
+        this.listaCategoria = data;
+        console.log(data);
+      },
+      error: e => console.log(e)
+    })
   }
 
   //Deletar Produto
@@ -45,6 +60,9 @@ export class ListarProdutosComponent {
     })
   }
 
+  //Atualizar Produto
+  idAtualizar: number = 0;
+
   //Ícones usados
   faClose = faClose;
   faFaceSadTear = faFaceSadTear;
@@ -53,14 +71,49 @@ export class ListarProdutosComponent {
   faTrashCan = faTrashCan;
 
   //Controles de popup
-  openPopUp: boolean = false;
+  openPopUpExcluir: boolean = false;
 
   abrirDialogoExcluir(idExcluir: any) {
-    this.openPopUp = true;
+    this.openPopUpExcluir = true;
     this.idDeletar = idExcluir;
   }
 
-  fecharDialogo() {
-    this.openPopUp = false;
+  fecharDialogoExcluir() {
+    this.openPopUpExcluir = false;
+  }
+
+  openPopUpEditar: boolean = false;
+
+  abrirDialogoEditar(idEditar: any) {
+    this.openPopUpEditar = true;
+    this.idDeletar = idEditar;
+  }
+
+  fecharDialogoEditar() {
+    this.openPopUpEditar = false;
+  }
+
+  //Dados de formulario
+  produtoFormAtualizar = new FormGroup({
+    newNomeProduto: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    newCategoria: new FormControl('', Validators.required),
+    newDescricao: new FormControl('', Validators.maxLength(100)),
+    newValUnitario: new FormControl('', [Validators.required, Validators.min(0.01)])
+  })
+
+  get newNomeProduto() {
+    return this.produtoFormAtualizar.get('newNomeProduto');
+  }
+
+  get newCategoria() {
+    return this.produtoFormAtualizar.get('newCategoria');
+  }
+
+  get newDescricao() {
+    return this.produtoFormAtualizar.get('newDescricao');
+  }
+
+  get newValUnitario() {
+    return this.produtoFormAtualizar.get('newValUnitario');
   }
 }
