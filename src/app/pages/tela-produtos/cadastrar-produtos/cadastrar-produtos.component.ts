@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cadastrar-produtos',
@@ -9,6 +9,8 @@ import { ProdutoService } from 'src/app/services/produto.service';
   styleUrls: []
 })
 export class CadastrarProdutosComponent implements OnInit {
+
+  faClose = faClose;
 
   listaCategoria?: string[] = [];
 

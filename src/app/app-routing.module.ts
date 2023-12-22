@@ -8,6 +8,7 @@ import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/l
 import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'inicio', component: TelaInicioComponent},
   {path: 'vender', component: TelaVendaComponent},
   {path: 'historico', component: TelaHistoricoComponent},

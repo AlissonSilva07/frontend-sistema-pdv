@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,8 +24,6 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PopupExcluirComponent } from './shared/popup-excluir/popup-excluir.component';
-import { PopupIncluirComponent } from './shared/popup-incluir/popup-incluir.component';
 import { VendasHojeComponent } from './shared/vendas-hoje/vendas-hoje.component';
 import { VendasMaisVendidosComponent } from './shared/vendas-mais-vendidos/vendas-mais-vendidos.component';
 import { UltimasVendasComponent } from './shared/ultimas-vendas/ultimas-vendas.component';
@@ -48,13 +47,12 @@ import { UltimasVendasComponent } from './shared/ultimas-vendas/ultimas-vendas.c
     NavbarComponent,
     ListarProdutosComponent,
     CadastrarProdutosComponent,
-    PopupExcluirComponent,
-    PopupIncluirComponent,
     VendasHojeComponent,
     VendasMaisVendidosComponent,
     UltimasVendasComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

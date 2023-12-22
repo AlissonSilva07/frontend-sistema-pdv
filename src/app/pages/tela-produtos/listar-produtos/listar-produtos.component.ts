@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { faTrash, faEdit, faTrashCan, faFaceSadTear } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -13,7 +14,7 @@ export class ListarProdutosComponent {
 
   produtos?: Produto[];
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private router: Router) {}
 
   ngOnInit(): void {
     this.listarProdutos();
@@ -25,26 +26,41 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.produtos = data;
-        console.log(data);
       },
       error: e => console.log(e)
     });
   }
 
+  //Deletar Produto
+  idDeletar: number = 0;
+
+  apagarPorID(): void {
+    this.produtoService.deletarProduto(this.idDeletar)
+    .subscribe({
+      next: res => {
+        console.log("O produto de id " + this.idDeletar + "foi apagado.");
+        window.location.reload();
+      },
+      error: e => console.error(e)
+    })
+  }
+
   //Ícones usados
+  faClose = faClose;
   faFaceSadTear = faFaceSadTear;
   faTrash = faTrash;
   faEdit = faEdit;
   faTrashCan = faTrashCan;
 
   //Controles de popup
-  openPopUpExcluir: boolean = false;
+  openPopUp: boolean = false;
 
-  abrirDialogoExcluir() {
-    this.openPopUpExcluir = true;
+  abrirDialogoExcluir(idExcluir: any) {
+    this.openPopUp = true;
+    this.idDeletar = idExcluir;
   }
 
-  fecharDialogoExcluir() {
-    this.openPopUpExcluir = false;
+  fecharDialogo() {
+    this.openPopUp = false;
   }
 }
