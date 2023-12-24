@@ -12,9 +12,11 @@ export class NavbarComponent {
 
   menuContextoIsOpen: boolean = false;
 
-  toggleMenuContexto() {
+  abrirMenuContexto() {
     this.menuContextoIsOpen = true;
-    console.log(this.menuContextoIsOpen);
+    setTimeout(() => {
+      this.menuContextoIsOpen = false;
+    }, 2000)
   }
 
   fecharMenuContexto() {

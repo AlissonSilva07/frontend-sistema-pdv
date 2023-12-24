@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { Produto } from '../models/Produto.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProdutoService {
+
+  constructor(private http: HttpClient) { }
+
+  todosProdutos(): Observable<Produto[]> {
+      return this.http.get<Produto[]>(`${environment.baseUrl}/todos`);
+  }
+
+  todasCategorias(): Observable<string[]> {
+    return this.http.get<string[]>(`${environment.baseUrl}/categorias`);
+  }
+
+  produtoPorID(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${environment.baseUrl}/buscar/${id}`);
+  }
+
+  postarProduto(produto: any): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/postar`, produto);
+  }
+
+  deletarProduto(id: number): Observable<number> {
+    return this.http.delete<number>(`${environment.baseUrl}/deletar/${id}`);
+  }
+}

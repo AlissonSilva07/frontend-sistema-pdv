@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,10 +21,12 @@ import { DetalhesDoProdutoComponent } from './shared/detalhes-do-produto/detalhe
 import { InputQuantidadeComponent } from './shared/input-quantidade/input-quantidade.component';
 import { ButtonIconComponent } from './shared/button-icon/button-icon.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { NavProdutosComponent } from './shared/nav-produtos/nav-produtos.component';
 import { ListarProdutosComponent } from './pages/tela-produtos/listar-produtos/listar-produtos.component';
 import { CadastrarProdutosComponent } from './pages/tela-produtos/cadastrar-produtos/cadastrar-produtos.component';
-import { PesquisarProdutosComponent } from './pages/tela-produtos/pesquisar-produtos/pesquisar-produtos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VendasHojeComponent } from './shared/vendas-hoje/vendas-hoje.component';
+import { VendasMaisVendidosComponent } from './shared/vendas-mais-vendidos/vendas-mais-vendidos.component';
+import { UltimasVendasComponent } from './shared/ultimas-vendas/ultimas-vendas.component';
 
 @NgModule({
   declarations: [
@@ -41,16 +45,21 @@ import { PesquisarProdutosComponent } from './pages/tela-produtos/pesquisar-prod
     InputQuantidadeComponent,
     ButtonIconComponent,
     NavbarComponent,
-    NavProdutosComponent,
     ListarProdutosComponent,
     CadastrarProdutosComponent,
-    PesquisarProdutosComponent
+    VendasHojeComponent,
+    VendasMaisVendidosComponent,
+    UltimasVendasComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

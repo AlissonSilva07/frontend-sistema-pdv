@@ -1,3 +1,67 @@
-<main class="w-full h-full p-8 bg-white rounded-xl flex items-center shadow-padrao border">
-    cadastrar
+<main class="w-screen h-screen bg-cinza-100 pt-20 pb-14 pl-[272px] p-8 bg-listras flex flex-col gap-4 z-10">
+    <p class="text-2xl text-cinza-400 font-bold">Cadastrar Produtos</p>
+    <div class="w-full h-auto flex items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
+        <div class="h-full w-2/6 p-4 rounded-l-lg">
+            <form [formGroup]="produtoForm" class="flex flex-col items-center gap-4">
+                <div class="w-full flex flex-col gap-2">
+                    <label for="nomeProduto" class="text-sm font-bold">Título</label>
+                    <input id="nomeProduto" type="text" formControlName="nomeProduto" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
+                    <div *ngIf="nomeProduto?.invalid && (nomeProduto?.dirty || nomeProduto?.touched)">
+                        <div *ngIf="nomeProduto?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                        <div *ngIf="nomeProduto?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 6 caracteres.</div>
+                    </div>
+                </div>
+
+                <div class="w-full flex flex-col gap-2">
+                    <label for="categoria" class="text-sm font-bold">Categoria</label>
+                    <select class="form-control" id="categoria" formControlName="categoria" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                        <option value="" selected disabled hidden>Selecione uma das opções</option>
+                        <option *ngFor="let c of listaCategoria" [ngValue]="c" class="text-sm">{{c}}</option>
+                    </select>
+                    <div *ngIf="categoria?.invalid && (categoria?.dirty || categoria?.touched)">
+                        <div *ngIf="categoria?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
+                    </div>
+                </div>
+
+                <div class="w-full flex flex-col gap-2">
+                    <label for="descricao" class="text-sm font-bold">Descrição</label>
+                    <textarea id="descricao" formControlName="descricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
+                    <div *ngIf="descricao?.invalid && (descricao?.dirty || descricao?.touched)">
+                        <div *ngIf="descricao?.errors?.['maxlength']" class="text-xs text-vermelho">Máximo de 100 caracteres.</div>
+                    </div>
+                </div>
+
+                <div class="w-full flex flex-col gap-2">
+                    <label for="valUnitario" class="text-sm font-bold">Valor Unitário</label>
+                    <input id="valUnitario" type="number" formControlName="valUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                    <div *ngIf="valUnitario?.invalid && (valUnitario?.dirty || valUnitario?.touched)">
+                        <div *ngIf="valUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                        <div *ngIf="valUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
+                    </div>
+                </div>
+
+                <div class="w-full flex items-center gap-4 justify-between">
+                    <app-main-button (click)="onSubmit()" textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
+                    <app-main-button (click)="resetForm()" textoExibir="Limpar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
+                </div>
+            </form>
+        </div>
+        <div class="h-full p-4 flex-1 rounded-r-lg overflow-hidden">
+            <img src="./assets/product.svg" width="400" class="mx-auto">
+        </div>
+    </div>
 </main>
+
+<div *ngIf="openPopUpIncluir" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
+	<div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
+		<p class="text-xl font-bold">Tudo certo!</p>
+        <p class="text-cinza-400 text-sm text-center">O novo produto foi adicionado à base de dados.</p>
+        <div class="w-full flex items-center justify-center gap-4">
+            <app-main-button textoExibir="Continuar" bgCor="bg-azul" textoCor="text-branco" (click)="fecharDialogoIncluir()"></app-main-button>
+            <a routerLink="/produtos/listar" class="text-sm text-vermelho hover:font-bold underline decoration-solid">Ir à tela de produtos</a>
+        </div>
+		<button (click)="fecharDialogoIncluir()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
+            <fa-icon [icon]="faClose"></fa-icon>
+        </button>
+	</div>
+</div>
