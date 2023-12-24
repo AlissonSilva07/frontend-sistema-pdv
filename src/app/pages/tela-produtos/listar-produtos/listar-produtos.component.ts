@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -11,6 +11,14 @@ import { ProdutoService } from 'src/app/services/produto.service';
   styleUrls: []
 })
 export class ListarProdutosComponent {
+
+  //Ícones usados
+  faClose = faClose;
+  faFaceSadTear = faFaceSadTear;
+  faTrash = faTrash;
+  faEdit = faEdit;
+  faTrashCan = faTrashCan;
+  faCircleExclamation = faCircleExclamation;
 
   produtos?: Produto[];
   listaCategoria?: string[] = [];
@@ -61,6 +69,7 @@ export class ListarProdutosComponent {
   //Atualizar Produto
   idAtualizar: number = 0;
   nomeProdutoAtualizar!: string;
+  msgErro!: string;
 
   atualizarPorId(): void {
     var dataAtualizar = this.produtoFormAtualizar.value;
@@ -74,12 +83,17 @@ export class ListarProdutosComponent {
     })
   }
 
-  //Ícones usados
-  faClose = faClose;
-  faFaceSadTear = faFaceSadTear;
-  faTrash = faTrash;
-  faEdit = faEdit;
-  faTrashCan = faTrashCan;
+  onSubmitAtualizar() {
+    if (this.produtoFormAtualizar.valid) {
+      this.atualizarPorId();
+      this.resetForm();
+    } else {
+      this.msgErro = 'Preencha todos os campos antes de enviar.';
+      setTimeout(() => {
+        this.msgErro = '';
+      }, 2000);
+    }
+  }
 
   //Controles de popup
   openPopUpExcluir: boolean = false;
@@ -127,5 +141,9 @@ export class ListarProdutosComponent {
 
   get valUnitario() {
     return this.produtoFormAtualizar.get('valUnitario');
+  }
+  
+  resetForm() {
+    this.produtoFormAtualizar.reset();
   }
 }

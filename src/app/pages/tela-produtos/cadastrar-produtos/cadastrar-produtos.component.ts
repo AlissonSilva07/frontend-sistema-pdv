@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProdutoService } from 'src/app/services/produto.service';
-import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cadastrar-produtos',
@@ -10,7 +10,9 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 })
 export class CadastrarProdutosComponent implements OnInit {
 
+  //Ícones usados
   faClose = faClose;
+  faCircleExclamation = faCircleExclamation;
 
   listaCategoria?: string[] = [];
 
@@ -20,6 +22,7 @@ export class CadastrarProdutosComponent implements OnInit {
     this.todasCategorias();
    }
 
+  //Busca todas as categorias e adiciona nas options
   todasCategorias(): void {
     this.productService.todasCategorias()
     .subscribe({
@@ -29,6 +32,9 @@ export class CadastrarProdutosComponent implements OnInit {
       error: e => console.log(e)
     })
   }
+
+  //Postar novo produto
+  msgErro!: string;
 
   salvarProduto(): void {
     var data = this.produtoForm.value;
@@ -41,6 +47,20 @@ export class CadastrarProdutosComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+    if (this.produtoForm.valid) {
+      this.salvarProduto();
+      this.resetForm();
+      this.abrirDialogoIncluir();
+    } else {
+      this.msgErro = 'Preencha todos os campos antes de enviar.';
+      setTimeout(() => {
+        this.msgErro = '';
+      }, 2000);
+    }
+  }
+
+  //Dados de formulario
   produtoForm = new FormGroup({
     nomeProduto: new FormControl('', [Validators.required, Validators.minLength(6)]),
     categoria: new FormControl('', Validators.required),
@@ -77,15 +97,4 @@ export class CadastrarProdutosComponent implements OnInit {
   resetForm() {
     this.produtoForm.reset();
   }
-
-  onSubmit() {
-    try {
-      this.produtoForm.valid ? this.abrirDialogoIncluir() : alert("Todos os campos precisam estar preenchidos");
-      this.salvarProduto()
-      this.resetForm();
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
 }

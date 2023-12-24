@@ -101,9 +101,13 @@
                     <div *ngIf="valUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
                 </div>
             </div>
+            <span *ngIf="msgErro" class="py-1 px-2 flex items-center gap-2 bg-branco border-2 border-vermelho rounded-full">
+                <fa-icon [icon]="faCircleExclamation" class="text-vermelho"></fa-icon>
+                <p class="text-xs text-vermelho font-medium">{{ msgErro }}</p>
+            </span>
         </form>
         <div class="w-full flex items-center gap-4 justify-between">
-            <app-main-button (click)="atualizarPorId()" textoExibir="Editar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
+            <app-main-button (click)="onSubmitAtualizar()" textoExibir="Editar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
             <app-main-button (click)="fecharDialogoEditar()" textoExibir="Cancelar" bgCor="bg-vermelho" textoCor="text-branco" class="flex-1"></app-main-button>
         </div>
         <button (click)="fecharDialogoEditar()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
