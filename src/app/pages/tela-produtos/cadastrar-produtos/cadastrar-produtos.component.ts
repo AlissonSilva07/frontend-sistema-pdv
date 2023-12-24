@@ -25,7 +25,6 @@ export class CadastrarProdutosComponent implements OnInit {
     .subscribe({
       next: data => {
         this.listaCategoria = data;
-        console.log(data);
       },
       error: e => console.log(e)
     })

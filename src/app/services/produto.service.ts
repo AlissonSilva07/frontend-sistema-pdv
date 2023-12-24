@@ -31,4 +31,8 @@ export class ProdutoService {
   deletarProduto(id: number): Observable<number> {
     return this.http.delete<number>(`${environment.baseUrl}/deletar/${id}`);
   }
+
+  atualizarProduto(idAtualizar: number, produtoAtualizar: any): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/atualizar/${idAtualizar}`, produtoAtualizar);
+  }
 }

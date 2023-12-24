@@ -35,7 +35,7 @@
                     <button class="p-1" (click)="abrirDialogoExcluir(produto.idProduto)">
                         <fa-icon [icon]="faTrash" class="text-vermelho hover:brightness-90 transition-all delay-75"></fa-icon>
                     </button>
-                    <button class="p-1" (click)="abrirDialogoEditar(produto.idProduto)">
+                    <button class="p-1" (click)="abrirDialogoEditar(produto.idProduto, produto.nomeProduto)">
                         <fa-icon [icon]="faEdit" class="text-verde hover:brightness-90 transition-all delay-75"></fa-icon>
                     </button>
                 </td>
@@ -63,47 +63,48 @@
 <div *ngIf="openPopUpEditar" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
     <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
         <p class="text-xl font-bold">Editar Produto</p>
+        <p *ngIf="idAtualizar && nomeProdutoAtualizar" class="text-base text-cinza-400">{{ idAtualizar }} - {{ nomeProdutoAtualizar }}</p>
         <form [formGroup]="produtoFormAtualizar" class="w-full flex flex-col items-center gap-4">
             <div class="w-full flex flex-col gap-2">
-                <label for="newNomeProduto" class="text-sm font-bold">Título</label>
-                <input id="newNomeProduto" type="text" formControlName="newNomeProduto" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
-                <div *ngIf="newNomeProduto?.invalid && (newNomeProduto?.dirty || newNomeProduto?.touched)">
-                    <div *ngIf="newNomeProduto?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
-                    <div *ngIf="newNomeProduto?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 6 caracteres.</div>
+                <label for="nomeProduto" class="text-sm font-bold">Título</label>
+                <input id="nomeProduto" type="text" formControlName="nomeProduto" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
+                <div *ngIf="nomeProduto?.invalid && (nomeProduto?.dirty || nomeProduto?.touched)">
+                    <div *ngIf="nomeProduto?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                    <div *ngIf="nomeProduto?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 6 caracteres.</div>
                 </div>
             </div>
 
             <div class="w-full flex flex-col gap-2">
-                <label for="newCategoria" class="text-sm font-bold">Categoria</label>
-                <select class="form-control" id="newCategoria" formControlName="newCategoria" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                <label for="categoria" class="text-sm font-bold">Categoria</label>
+                <select class="form-control" id="categoria" formControlName="categoria" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
                     <option value="" selected disabled hidden>Selecione uma das opções</option>
                     <option *ngFor="let c of listaCategoria" [ngValue]="c" class="text-sm">{{c}}</option>
                 </select>
-                <div *ngIf="newCategoria?.invalid && (newCategoria?.dirty || newCategoria?.touched)">
-                    <div *ngIf="newCategoria?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
+                <div *ngIf="categoria?.invalid && (categoria?.dirty || categoria?.touched)">
+                    <div *ngIf="categoria?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
                 </div>
             </div>
 
             <div class="w-full flex flex-col gap-2">
-                <label for="newDescricao" class="text-sm font-bold">Descrição</label>
-                <textarea id="newDescricao" formControlName="newDescricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
-                <div *ngIf="newDescricao?.invalid && (newDescricao?.dirty || newDescricao?.touched)">
-                    <div *ngIf="newDescricao?.errors?.['maxlength']" class="text-xs text-vermelho">Máximo de 100 caracteres.</div>
+                <label for="descricao" class="text-sm font-bold">Descrição</label>
+                <textarea id="descricao" formControlName="descricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
+                <div *ngIf="descricao?.invalid && (descricao?.dirty || descricao?.touched)">
+                    <div *ngIf="descricao?.errors?.['maxlength']" class="text-xs text-vermelho">Máximo de 100 caracteres.</div>
                 </div>
             </div>
 
             <div class="w-full flex flex-col gap-2">
-                <label for="newValUnitario" class="text-sm font-bold">Valor Unitário</label>
-                <input id="newValUnitario" type="number" formControlName="newValUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
-                <div *ngIf="newValUnitario?.invalid && (newValUnitario?.dirty || newValUnitario?.touched)">
-                    <div *ngIf="newValUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
-                    <div *ngIf="newValUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
+                <label for="valUnitario" class="text-sm font-bold">Valor Unitário</label>
+                <input id="valUnitario" type="number" formControlName="valUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
+                <div *ngIf="valUnitario?.invalid && (valUnitario?.dirty || valUnitario?.touched)">
+                    <div *ngIf="valUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
+                    <div *ngIf="valUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
                 </div>
             </div>
         </form>
         <div class="w-full flex items-center gap-4 justify-between">
-            <app-main-button textoExibir="Editar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
-            <app-main-button (click)="fecharDialogoEditar()" textoExibir="Cancelar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
+            <app-main-button (click)="atualizarPorId()" textoExibir="Editar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
+            <app-main-button (click)="fecharDialogoEditar()" textoExibir="Cancelar" bgCor="bg-vermelho" textoCor="text-branco" class="flex-1"></app-main-button>
         </div>
         <button (click)="fecharDialogoEditar()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
             <fa-icon [icon]="faClose"></fa-icon>
