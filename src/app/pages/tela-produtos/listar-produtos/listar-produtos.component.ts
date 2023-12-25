@@ -36,6 +36,7 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.produtos = data;
+        console.log(this.produtos)
       },
       error: e => console.log(e)
     });
@@ -93,6 +94,19 @@ export class ListarProdutosComponent {
         this.msgErro = '';
       }, 2000);
     }
+  }
+
+  //Contagem de selects
+  contagemSelect!: number;
+
+  contar() {
+    this.contagemSelect = 0;
+    this.produtos?.forEach(i => {
+      if (i['isChecked']) {
+        this.contagemSelect++;
+      }
+    })
+    console.log(this.contagemSelect);
   }
 
   //Controles de popup

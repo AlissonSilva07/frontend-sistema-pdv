@@ -23,7 +23,7 @@
             </tr>
             <tr *ngFor="let produto of produtos" id={{produto.idProduto}} class="text-sm text-cinza-600 font-medium">
                 <td>
-                    <input type="checkbox" name="" id={{produto.idProduto}}>
+                    <input type="checkbox" name="" id={{produto.idProduto}} [(ngModel)]="produto.isChecked" (ngModelChange)="contar()">
                 </td>
                 <td>{{ produto.dataCriacao }}</td>
                 <td>{{ produto.idProduto }}</td>
@@ -41,7 +41,7 @@
                 </td>
             </tr>
         </table>
-        <app-main-button class="absolute bottom-4 right-4" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
+        <app-main-button *ngIf="contagemSelect >= 2" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
     </div>
 </main>
 
@@ -63,7 +63,7 @@
 <div *ngIf="openPopUpEditar" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
     <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
         <p class="text-xl font-bold">Editar Produto</p>
-        <p *ngIf="idAtualizar && nomeProdutoAtualizar" class="text-base text-cinza-400">{{ idAtualizar }} - {{ nomeProdutoAtualizar }}</p>
+        <p *ngIf="idAtualizar && nomeProdutoAtualizar" class="text-base text-cinza-400">ID: {{ idAtualizar }} - {{ nomeProdutoAtualizar }}</p>
         <form [formGroup]="produtoFormAtualizar" class="w-full flex flex-col items-center gap-4">
             <div class="w-full flex flex-col gap-2">
                 <label for="nomeProduto" class="text-sm font-bold">Título</label>
