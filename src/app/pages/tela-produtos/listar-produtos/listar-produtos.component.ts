@@ -54,7 +54,7 @@ export class ListarProdutosComponent {
   }
 
   //Deletar Produto
-  idDeletar: number = 0;
+  idDeletar!: number[];
 
   apagarPorID(): void {
     this.produtoService.deletarProduto(this.idDeletar)
@@ -106,7 +106,6 @@ export class ListarProdutosComponent {
         this.contagemSelect++;
       }
     })
-    console.log(this.contagemSelect);
   }
 
   //Controles de popup
