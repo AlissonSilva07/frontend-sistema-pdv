@@ -44,6 +44,11 @@
                     <app-main-button (click)="onSubmit()" textoExibir="Criar" bgCor="bg-azul" textoCor="text-branco" class="flex-1"></app-main-button>
                     <app-main-button (click)="resetForm()" textoExibir="Limpar" bgCor="bg-amarelo" textoCor="text-branco" class="flex-1"></app-main-button>
                 </div>
+
+                <span *ngIf="msgErro" class="py-1 px-2 flex items-center gap-2 bg-branco border-2 border-vermelho rounded-full">
+                    <fa-icon [icon]="faCircleExclamation" class="text-vermelho"></fa-icon>
+                    <p class="text-xs text-vermelho font-medium">{{ msgErro }}</p>
+                </span>
             </form>
         </div>
         <div class="h-full p-4 flex-1 rounded-r-lg overflow-hidden">

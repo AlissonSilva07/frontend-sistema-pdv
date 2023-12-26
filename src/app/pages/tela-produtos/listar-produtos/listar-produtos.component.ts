@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
-import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -13,10 +12,18 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class ListarProdutosComponent {
 
+  //Ícones usados
+  faClose = faClose;
+  faFaceSadTear = faFaceSadTear;
+  faTrash = faTrash;
+  faEdit = faEdit;
+  faTrashCan = faTrashCan;
+  faCircleExclamation = faCircleExclamation;
+
   produtos?: Produto[];
   listaCategoria?: string[] = [];
 
-  constructor(private produtoService: ProdutoService, private router: Router) {}
+  constructor(private produtoService: ProdutoService) {}
 
   ngOnInit(): void {
     this.listarProdutos();
@@ -29,6 +36,7 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.produtos = data;
+        console.log(this.produtos)
       },
       error: e => console.log(e)
     });
@@ -40,14 +48,13 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.listaCategoria = data;
-        console.log(data);
       },
       error: e => console.log(e)
     })
   }
 
   //Deletar Produto
-  idDeletar: number = 0;
+  idDeletar!: number[];
 
   apagarPorID(): void {
     this.produtoService.deletarProduto(this.idDeletar)
@@ -62,13 +69,44 @@ export class ListarProdutosComponent {
 
   //Atualizar Produto
   idAtualizar: number = 0;
+  nomeProdutoAtualizar!: string;
+  msgErro!: string;
 
-  //Ícones usados
-  faClose = faClose;
-  faFaceSadTear = faFaceSadTear;
-  faTrash = faTrash;
-  faEdit = faEdit;
-  faTrashCan = faTrashCan;
+  atualizarPorId(): void {
+    var dataAtualizar = this.produtoFormAtualizar.value;
+    this.produtoService.atualizarProduto(this.idAtualizar, dataAtualizar)
+    .subscribe({
+      next: res => {
+        console.log(res);
+        window.location.reload();
+      },
+      error: e => console.log(e)
+    })
+  }
+
+  onSubmitAtualizar() {
+    if (this.produtoFormAtualizar.valid) {
+      this.atualizarPorId();
+      this.resetForm();
+    } else {
+      this.msgErro = 'Preencha todos os campos antes de enviar.';
+      setTimeout(() => {
+        this.msgErro = '';
+      }, 2000);
+    }
+  }
+
+  //Contagem de selects
+  contagemSelect!: number;
+
+  contar() {
+    this.contagemSelect = 0;
+    this.produtos?.forEach(i => {
+      if (i['isChecked']) {
+        this.contagemSelect++;
+      }
+    })
+  }
 
   //Controles de popup
   openPopUpExcluir: boolean = false;
@@ -84,9 +122,10 @@ export class ListarProdutosComponent {
 
   openPopUpEditar: boolean = false;
 
-  abrirDialogoEditar(idEditar: any) {
+  abrirDialogoEditar(idEditar: any, nomeEditar: any) {
     this.openPopUpEditar = true;
-    this.idDeletar = idEditar;
+    this.idAtualizar = idEditar;
+    this.nomeProdutoAtualizar = nomeEditar;
   }
 
   fecharDialogoEditar() {
@@ -95,25 +134,29 @@ export class ListarProdutosComponent {
 
   //Dados de formulario
   produtoFormAtualizar = new FormGroup({
-    newNomeProduto: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    newCategoria: new FormControl('', Validators.required),
-    newDescricao: new FormControl('', Validators.maxLength(100)),
-    newValUnitario: new FormControl('', [Validators.required, Validators.min(0.01)])
+    nomeProduto: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    categoria: new FormControl('', Validators.required),
+    descricao: new FormControl('', Validators.maxLength(100)),
+    valUnitario: new FormControl('', [Validators.required, Validators.min(0.01)])
   })
 
-  get newNomeProduto() {
-    return this.produtoFormAtualizar.get('newNomeProduto');
+  get nomeProduto() {
+    return this.produtoFormAtualizar.get('nomeProduto');
   }
 
-  get newCategoria() {
-    return this.produtoFormAtualizar.get('newCategoria');
+  get categoria() {
+    return this.produtoFormAtualizar.get('categoria');
   }
 
-  get newDescricao() {
-    return this.produtoFormAtualizar.get('newDescricao');
+  get descricao() {
+    return this.produtoFormAtualizar.get('descricao');
   }
 
-  get newValUnitario() {
-    return this.produtoFormAtualizar.get('newValUnitario');
+  get valUnitario() {
+    return this.produtoFormAtualizar.get('valUnitario');
+  }
+  
+  resetForm() {
+    this.produtoFormAtualizar.reset();
   }
 }
