@@ -36,7 +36,6 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.produtos = data;
-        console.log(this.produtos)
       },
       error: e => console.log(e)
     });
@@ -54,13 +53,25 @@ export class ListarProdutosComponent {
   }
 
   //Deletar Produto
-  idDeletar!: number[];
+  idDeletar!: number;
+  arrayDeletar!: number[];
 
   apagarPorID(): void {
     this.produtoService.deletarProduto(this.idDeletar)
     .subscribe({
       next: res => {
         console.log("O produto de id " + this.idDeletar + "foi apagado.");
+        window.location.reload();
+      },
+      error: e => console.error(e)
+    })
+  }
+
+  apagarVarios(): void {
+    this.produtoService.deletarVarios(this.arrayDeletar)
+    .subscribe({
+      next: res => {
+        console.log("Os produtos " + this.idDeletar + "foram apagados.");
         window.location.reload();
       },
       error: e => console.error(e)

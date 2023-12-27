@@ -41,7 +41,7 @@
                 </td>
             </tr>
         </table>
-        <app-main-button *ngIf="contagemSelect >= 2" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
+        <app-main-button *ngIf="contagemSelect >= 2" (click)="apagarVarios()" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
     </div>
 </main>
 
