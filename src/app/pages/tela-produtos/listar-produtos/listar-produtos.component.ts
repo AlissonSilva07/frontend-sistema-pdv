@@ -52,27 +52,15 @@ export class ListarProdutosComponent {
     })
   }
 
-  //Deletar Produto
-  idDeletar!: number;
-  arrayDeletar!: number[];
+  //Deletar um Produto
+  arrayDeletar: number[] = [];
 
   apagarPorID(): void {
-    this.produtoService.deletarProduto(this.idDeletar)
+    this.produtoService.deletarProduto(this.arrayDeletar)
     .subscribe({
       next: res => {
-        console.log("O produto de id " + this.idDeletar + "foi apagado.");
         window.location.reload();
-      },
-      error: e => console.error(e)
-    })
-  }
-
-  apagarVarios(): void {
-    this.produtoService.deletarVarios(this.arrayDeletar)
-    .subscribe({
-      next: res => {
-        console.log("Os produtos " + this.idDeletar + "foram apagados.");
-        window.location.reload();
+        this.arrayDeletar = [];
       },
       error: e => console.error(e)
     })
@@ -113,9 +101,7 @@ export class ListarProdutosComponent {
   contar() {
     this.contagemSelect = 0;
     this.produtos?.forEach(i => {
-      if (i['isChecked']) {
-        this.contagemSelect++;
-      }
+      i.isChecked == true ? this.contagemSelect++ : this.contagemSelect;
     })
   }
 
@@ -124,7 +110,7 @@ export class ListarProdutosComponent {
 
   abrirDialogoExcluir(idExcluir: any) {
     this.openPopUpExcluir = true;
-    this.idDeletar = idExcluir;
+    this.arrayDeletar.push(idExcluir);
   }
 
   fecharDialogoExcluir() {

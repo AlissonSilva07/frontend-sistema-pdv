@@ -28,11 +28,7 @@ export class ProdutoService {
     return this.http.post(`${environment.baseUrl}/postar`, produto);
   }
 
-  deletarProduto(id: number): Observable<number> {
-    return this.http.delete<number>(`${environment.baseUrl}/deletar/${id}`);
-  }
-
-  deletarVarios(ids: number[]): Observable<number[]> {
+  deletarProduto(ids: number[]): Observable<number[]> {
     return this.http.delete<number[]>(`${environment.baseUrl}/deletar/${ids}`);
   }
 
