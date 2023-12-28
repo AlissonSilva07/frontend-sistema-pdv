@@ -20,8 +20,8 @@ export class ListarProdutosComponent {
   faTrashCan = faTrashCan;
   faCircleExclamation = faCircleExclamation;
 
-  produtos?: Produto[];
-  listaCategoria?: string[] = [];
+  produtos: Produto[] = [];
+  listaCategoria: string[] = [];
 
   constructor(private produtoService: ProdutoService) {}
 
@@ -52,8 +52,22 @@ export class ListarProdutosComponent {
     })
   }
 
-  //Deletar um Produto
+  //Deletar Produtos
   arrayDeletar: number[] = [];
+
+  apagarSelecionados() {
+    const selecionados = this.produtos.filter(p => p.isChecked);
+    const ids: (undefined | number)[] = selecionados.map(i => i.idProduto);
+    
+    this.produtoService.deletarProduto(ids)
+    .subscribe({
+      next: res => {
+        window.location.reload();
+        this.arrayDeletar = [];
+      },
+      error: e => console.error(e)
+    })
+  }
 
   apagarPorID(): void {
     this.produtoService.deletarProduto(this.arrayDeletar)
@@ -100,7 +114,7 @@ export class ListarProdutosComponent {
 
   contar() {
     this.contagemSelect = 0;
-    this.produtos?.forEach(i => {
+    this.produtos.forEach(i => {
       i.isChecked == true ? this.contagemSelect++ : this.contagemSelect;
     })
   }
@@ -115,6 +129,16 @@ export class ListarProdutosComponent {
 
   fecharDialogoExcluir() {
     this.openPopUpExcluir = false;
+  }
+
+  openPopUpExcluirVarios: boolean = false;
+
+  abrirDialogoExcluirVarios() {
+    this.openPopUpExcluirVarios = true;
+  }
+
+  fecharDialogoExcluirVarios() {
+    this.openPopUpExcluirVarios = false;
   }
 
   openPopUpEditar: boolean = false;

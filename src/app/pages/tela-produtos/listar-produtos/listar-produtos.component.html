@@ -41,17 +41,31 @@
                 </td>
             </tr>
         </table>
-        <app-main-button *ngIf="contagemSelect >= 2" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
+        <app-main-button *ngIf="contagemSelect >= 2" (click)="abrirDialogoExcluirVarios()" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
     </div>
 </main>
 
 
 <div *ngIf="openPopUpExcluir" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
     <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
-        <p class="text-xl font-bold text-center">Deseja excluir o(os) produto(os) selecionado(os)?</p>
-        <p class="text-cinza-400 text-sm">Essa ação não poderá ser desfeita.</p>
+        <p class="text-xl font-bold text-center">Deseja excluir o produto selecionado?</p>
+        <p class="text-cinza-400 text-sm">Essa ação apagará o produto selecionado não poderá ser desfeita.</p>
         <div class="flex items-center gap-4">
             <app-main-button textoExibir="Sim" bgCor="bg-azul" textoCor="text-branco" (click)="apagarPorID()"></app-main-button>
+            <app-main-button textoExibir="Não" bgCor="bg-vermelho" textoCor="text-branco" (click)="fecharDialogoExcluir()"></app-main-button>
+        </div>
+        <button (click)="fecharDialogoExcluir()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
+            <fa-icon [icon]="faClose"></fa-icon>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="openPopUpExcluirVarios" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
+    <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
+        <p class="text-xl font-bold text-center">Deseja excluir os produtos selecionados?</p>
+        <p class="text-cinza-400 text-sm">Essa ação apagará todos os produtos selecionados e não poderá ser desfeita.</p>
+        <div class="flex items-center gap-4">
+            <app-main-button textoExibir="Sim" bgCor="bg-azul" textoCor="text-branco" (click)="apagarSelecionados()"></app-main-button>
             <app-main-button textoExibir="Não" bgCor="bg-vermelho" textoCor="text-branco" (click)="fecharDialogoExcluir()"></app-main-button>
         </div>
         <button (click)="fecharDialogoExcluir()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
