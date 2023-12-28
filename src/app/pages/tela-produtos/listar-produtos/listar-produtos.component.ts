@@ -41,6 +41,12 @@ export class ListarProdutosComponent {
     });
   }
 
+  //Filtragem de produtos
+  filtrarProdutos(idFiltrar: number): void {
+    let produto = this.produtos.find(produtoFiltrado => produtoFiltrado.idProduto == idFiltrar);
+    console.log(produto);
+  }
+
   //Lista de Categorias
   todasCategorias(): void {
     this.produtoService.todasCategorias()
@@ -55,7 +61,7 @@ export class ListarProdutosComponent {
   //Deletar Produtos
   arrayDeletar: number[] = [];
 
-  apagarSelecionados() {
+  apagarSelecionados(): void {
     const selecionados = this.produtos.filter(p => p.isChecked);
     const ids: (undefined | number)[] = selecionados.map(i => i.idProduto);
     
@@ -97,7 +103,7 @@ export class ListarProdutosComponent {
     })
   }
 
-  onSubmitAtualizar() {
+  onSubmitAtualizar(): void {
     if (this.produtoFormAtualizar.valid) {
       this.atualizarPorId();
       this.resetForm();
@@ -112,7 +118,7 @@ export class ListarProdutosComponent {
   //Contagem de selects
   contagemSelect!: number;
 
-  contar() {
+  contar(): void {
     this.contagemSelect = 0;
     this.produtos.forEach(i => {
       i.isChecked == true ? this.contagemSelect++ : this.contagemSelect;
@@ -122,34 +128,34 @@ export class ListarProdutosComponent {
   //Controles de popup
   openPopUpExcluir: boolean = false;
 
-  abrirDialogoExcluir(idExcluir: any) {
+  abrirDialogoExcluir(idExcluir: any): void {
     this.openPopUpExcluir = true;
     this.arrayDeletar.push(idExcluir);
   }
 
-  fecharDialogoExcluir() {
+  fecharDialogoExcluir(): void {
     this.openPopUpExcluir = false;
   }
 
   openPopUpExcluirVarios: boolean = false;
 
-  abrirDialogoExcluirVarios() {
+  abrirDialogoExcluirVarios(): void {
     this.openPopUpExcluirVarios = true;
   }
 
-  fecharDialogoExcluirVarios() {
+  fecharDialogoExcluirVarios(): void {
     this.openPopUpExcluirVarios = false;
   }
 
   openPopUpEditar: boolean = false;
 
-  abrirDialogoEditar(idEditar: any, nomeEditar: any) {
+  abrirDialogoEditar(idEditar: any, nomeEditar: any): void {
     this.openPopUpEditar = true;
     this.idAtualizar = idEditar;
     this.nomeProdutoAtualizar = nomeEditar;
   }
 
-  fecharDialogoEditar() {
+  fecharDialogoEditar(): void {
     this.openPopUpEditar = false;
   }
 
@@ -177,7 +183,7 @@ export class ListarProdutosComponent {
     return this.produtoFormAtualizar.get('valUnitario');
   }
   
-  resetForm() {
+  resetForm(): void {
     this.produtoFormAtualizar.reset();
   }
 }
