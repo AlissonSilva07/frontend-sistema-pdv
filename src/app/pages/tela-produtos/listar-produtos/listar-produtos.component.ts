@@ -41,12 +41,6 @@ export class ListarProdutosComponent {
     });
   }
 
-  //Filtragem de produtos
-  filtrarProdutos(idFiltrar: number): void {
-    let produto = this.produtos.find(produtoFiltrado => produtoFiltrado.idProduto == idFiltrar);
-    console.log(produto);
-  }
-
   //Lista de Categorias
   todasCategorias(): void {
     this.produtoService.todasCategorias()
