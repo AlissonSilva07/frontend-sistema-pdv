@@ -1,7 +1,7 @@
 <main class="w-screen h-screen pt-20 pb-14 pl-[272px] pr-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <div class="w-full h-full flex gap-4">
         <div class="h-full w-5/12 flex flex-col gap-4">
-            <app-input texto="Cód. do Produto"></app-input>
+            <app-input [listaProdutos]="produtos" (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
             <app-detalhes-do-produto class="flex-1"></app-detalhes-do-produto>
             <div class="w-full flex items-center justify-between gap-8">
                 <app-input-quantidade></app-input-quantidade>

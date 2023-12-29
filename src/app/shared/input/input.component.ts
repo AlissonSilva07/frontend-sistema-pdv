@@ -18,7 +18,6 @@ export class InputComponent {
 
   exibirReload: boolean = false;
   exibirErro: boolean = false;
-  msgErro!: string;
   
   //Filtragem de produtos
   filtrarProdutos(idFiltrar: any): void {
@@ -33,12 +32,10 @@ export class InputComponent {
   }
 
   sucessoFiltro(): void {
-    console.log("Enviado sucesso")
     this.filterSuccess.emit(this.exibirReload = true);
   }
 
   erroFiltro(): void {
-    console.log("Enviado falha")
     this.filterFailure.emit(this.exibirErro = true);
   }
 }
