@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose, faCircleExclamation, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -19,8 +19,10 @@ export class ListarProdutosComponent {
   faEdit = faEdit;
   faTrashCan = faTrashCan;
   faCircleExclamation = faCircleExclamation;
+  faRotateRight = faRotateRight;
 
   produtos: Produto[] = [];
+  produtosFilter: Produto[] = [];
   listaCategoria: string[] = [];
 
   constructor(private produtoService: ProdutoService) {}
@@ -36,6 +38,7 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.produtos = data;
+        this.produtosFilter = this.produtos;
       },
       error: e => console.log(e)
     });
@@ -50,6 +53,32 @@ export class ListarProdutosComponent {
       },
       error: e => console.log(e)
     })
+  }
+
+  //Filtrar Produtos
+  produtoFiltradoReceiver(produtoFiltrado: any): void {
+    console.log(produtoFiltrado)
+    this.produtosFilter = this.produtos.filter(p => p.idProduto == produtoFiltrado);
+  }
+
+  exibeReload: boolean = false;
+  exibirReload(reload: boolean): void {
+    this.exibeReload = reload;
+  }
+
+  exibeFalha: boolean = false;
+  exibirFalha(falha: boolean): void {
+    this.exibeReload = false;
+    this.exibeFalha = falha;
+    setTimeout(() => {
+      this.exibeFalha = false;
+      this.exibeReload = true;
+    }, 2000);
+  }
+
+  recarregarLista(): void {
+    this.listarProdutos();
+    this.exibeReload = false;
   }
 
   //Deletar Produtos

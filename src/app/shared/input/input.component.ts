@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 
@@ -12,10 +12,33 @@ export class InputComponent {
 
   @Input() texto = "";
   @Input() listaProdutos: Produto[] = [];
+  @Output() produtoFiltrado = new EventEmitter();
+  @Output() filterSuccess = new EventEmitter();
+  @Output() filterFailure = new EventEmitter();
+
+  exibirReload: boolean = false;
+  exibirErro: boolean = false;
+  msgErro!: string;
   
   //Filtragem de produtos
   filtrarProdutos(idFiltrar: any): void {
-    let produto = this.listaProdutos.find(produtoFiltrado => produtoFiltrado.idProduto == idFiltrar);
-    console.log(produto);
+    let produtoSaída = this.listaProdutos.find(p => p.idProduto == idFiltrar);
+
+    if (produtoSaída) {
+      this.produtoFiltrado.emit(produtoSaída.idProduto);
+      this.sucessoFiltro();
+    } else {
+      this.erroFiltro();
+    }
+  }
+
+  sucessoFiltro(): void {
+    console.log("Enviado sucesso")
+    this.filterSuccess.emit(this.exibirReload = true);
+  }
+
+  erroFiltro(): void {
+    console.log("Enviado falha")
+    this.filterFailure.emit(this.exibirErro = true);
   }
 }

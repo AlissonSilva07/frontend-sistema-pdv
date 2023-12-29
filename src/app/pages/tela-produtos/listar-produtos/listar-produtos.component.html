@@ -1,7 +1,15 @@
 <main class="w-screen h-screen pt-20 pb-14 pl-[272px] p-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <div class="flex items-center justify-between">
         <p class="text-2xl text-cinza-400 font-bold">Lista de Produtos</p>
-        <app-input [listaProdutos]="produtos" texto="Cód. do Produto"></app-input>
+        <button (click)="recarregarLista()" *ngIf="exibeReload" class="py-1 px-2 flex items-center gap-2 bg-branco border-2 border-azul rounded-full transition ease-in">
+            <fa-icon [icon]="faRotateRight" class="text-azul"></fa-icon>
+            <p class="text-xs text-azul font-medium">Recarregar Lista</p>
+        </button>
+        <button *ngIf="exibeFalha" class="py-1 px-2 flex items-center gap-2 bg-branco border-2 border-vermelho rounded-full transition ease-in">
+            <fa-icon [icon]="faCircleExclamation" class="text-vermelho"></fa-icon>
+            <p class="text-xs text-vermelho font-medium">O produto pesquisado não consta na base de dados.</p>
+        </button>
+        <app-input [listaProdutos]="produtos" (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
     </div>
     <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
         <ng-template #elseBlock>
@@ -10,7 +18,7 @@
                 <p class="text-cinza-400 text-sm">Nenhum produto foi cadastrado ainda.</p>
             </div>
         </ng-template>
-        <table *ngIf="produtos?.length; else elseBlock" class="table-auto text-center w-full">
+        <table *ngIf="produtosFilter?.length; else elseBlock" class="table-auto text-center w-full">
             <tr class="text-sm text-white bg-roxo">
                 <td>Selec.</td>
                 <td>Dt. de Criação</td>
@@ -21,7 +29,7 @@
                 <td>Valor Unit.</td>
                 <td>Ações</td>
             </tr>
-            <tr *ngFor="let produto of produtos" id={{produto.idProduto}} class="text-sm text-cinza-600 font-medium">
+            <tr *ngFor="let produto of produtosFilter" id={{produto.idProduto}} class="text-sm text-cinza-600 font-medium">
                 <td>
                     <input type="checkbox" name="" id={{produto.idProduto}} [(ngModel)]="produto.isChecked" (ngModelChange)="contar()">
                 </td>
