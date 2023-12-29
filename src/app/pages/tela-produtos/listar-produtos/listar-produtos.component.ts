@@ -68,11 +68,9 @@ export class ListarProdutosComponent {
 
   exibeFalha: boolean = false;
   exibirFalha(falha: boolean): void {
-    this.exibeReload = false;
     this.exibeFalha = falha;
     setTimeout(() => {
       this.exibeFalha = false;
-      this.exibeReload = true;
     }, 2000);
   }
 
