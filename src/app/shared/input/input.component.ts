@@ -11,7 +11,6 @@ export class InputComponent {
   faMagnifyingGlass = faMagnifyingGlass;
 
   @Input() texto = "";
-  @Input() listaProdutos: Produto[] = [];
   @Output() produtoFiltrado = new EventEmitter();
   @Output() filterSuccess = new EventEmitter();
   @Output() filterFailure = new EventEmitter();
@@ -21,10 +20,8 @@ export class InputComponent {
   
   //Filtragem de produtos
   filtrarProdutos(idFiltrar: any): void {
-    let produtoSaída = this.listaProdutos.find(p => p.idProduto == idFiltrar);
-
-    if (produtoSaída) {
-      this.produtoFiltrado.emit(produtoSaída.idProduto);
+    if (idFiltrar) {
+      this.produtoFiltrado.emit(idFiltrar);
       this.sucessoFiltro();
     } else {
       this.erroFiltro();

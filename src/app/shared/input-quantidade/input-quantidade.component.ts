@@ -8,9 +8,6 @@ import { Produto } from 'src/app/models/Produto.model';
 })
 export class InputQuantidadeComponent {
 
-  @Input() produtoFiltrado!: Produto;
-
-
   //Input de quantidade
   quantidade: number = 1;
 

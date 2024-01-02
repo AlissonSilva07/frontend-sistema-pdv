@@ -8,46 +8,31 @@ import { ProdutoService } from 'src/app/services/produto.service';
   styleUrls: []
 })
 export class TelaVendaComponent {
-  produtos: Produto[] = [];
-  produtoFilter!: Produto;
+
+  produtoPesquisa!: Produto;
+  erro: boolean = false;
+  msgErro!: string;
 
   constructor(private produtoService: ProdutoService) {}
 
-  ngOnInit(): void {
-    this.listarProdutos();
+  ngOnInit(): void {}
+
+  //Buscar produto por ID
+  buscarProdutoPorID(idFiltrar: number) {
+    return this.produtoService.produtoPorID(idFiltrar)
+      .subscribe({
+        next: res => {
+          console.log(res);
+          this.produtoPesquisa = res;
+        },
+        error: err => {
+          console.log(err);
+        }
+      })
   }
 
-  listarProdutos(): void {
-    this.produtoService.todosProdutos()
-    .subscribe({
-      next: data => {
-        this.produtos = data;
-      },
-      error: e => console.log(e)
-    });
-  }
-
-  //Filtrar Produtos
   produtoFiltradoReceiver(produtoFiltrado: any): void {
-    console.log(produtoFiltrado)
-  }
-
-  exibeReload: boolean = false;
-  exibirReload(reload: boolean): void {
-    this.exibeReload = reload;
-  }
-
-  exibeFalha: boolean = false;
-  exibirFalha(falha: boolean): void {
-    this.exibeFalha = falha;
-    setTimeout(() => {
-      this.exibeFalha = false;
-    }, 2000);
-  }
-
-  recarregarLista(): void {
-    this.listarProdutos();
-    this.exibeReload = false;
+    this.buscarProdutoPorID(produtoFiltrado);
   }
 
 }

@@ -2,22 +2,28 @@
     <div>
         <p class="text-sm text-cinza-400">Detalhes do Produto</p>
     </div>
-    <div class="flex flex-col items-center short:gap-8 gap-10 my-auto">
+    <div *ngIf="produtoDetalhe; else default" class="flex flex-col items-center short:gap-8 gap-10 my-auto">
         <div class="flex flex-col items-center">
             <p class="text-xs text-cinza-400">Cód. do Produto</p>
-            <p class="text-4xl short:text-3xl text-azul">OB2455</p>
+            <p class="text-4xl short:text-3xl text-azul">{{ produtoDetalhe.idProduto }}</p>
         </div>
         <div class="flex flex-col items-center">
-            <p class="text-xs text-cinza-400">Descrição</p>
-            <p class="text-cinza-600 text-2xl short:text-xl font-medium">Biscoito de Leite</p>
+            <p class="text-xs text-cinza-400">Título</p>
+            <p class="text-cinza-600 text-2xl short:text-xl font-medium">{{ produtoDetalhe.nomeProduto }}</p>
         </div>
         <div class="flex flex-col items-center">
             <p class="text-xs text-cinza-400">Categoria</p>
-            <p class="text-cinza-600 text-2xl short:text-xl font-medium">Cereais</p>
+            <p class="text-cinza-600 text-2xl short:text-xl font-medium">{{ produtoDetalhe.categoria }}</p>
         </div>
         <div class="flex flex-col items-center">
             <p class="text-xs text-cinza-400">Valor Unitário</p>
-            <p class="text-cinza-600 text-2xl short:text-xl font-medium">R$ 1,50</p>
+            <p class="text-cinza-600 text-2xl short:text-xl font-medium">{{ produtoDetalhe.valUnitario}}</p>
         </div>
     </div>
+    <ng-template #err>
+        <p class="my-auto text-center text-vermelho">{{ msg }}</p>
+    </ng-template>
+    <ng-template #default>
+        <p class="my-auto text-center text-cinza-400">Digite o código do produto acima e aperte o botão da lupa <fa-icon [icon]="faMagnifyingGlass"></fa-icon> para pesquisar.</p>
+    </ng-template>
 </div>

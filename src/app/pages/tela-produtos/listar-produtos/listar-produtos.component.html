@@ -9,7 +9,7 @@
             <fa-icon [icon]="faCircleExclamation" class="text-vermelho"></fa-icon>
             <p class="text-xs text-vermelho font-medium">O produto pesquisado não consta na base de dados.</p>
         </button>
-        <app-input [listaProdutos]="produtos" (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
+        <app-input (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
     </div>
     <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
         <ng-template #elseBlock>
