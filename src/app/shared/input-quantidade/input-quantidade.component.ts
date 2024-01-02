@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Produto } from 'src/app/models/Produto.model';
 
 @Component({
   selector: 'app-input-quantidade',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: []
 })
 export class InputQuantidadeComponent {
+
+  @Input() produtoFiltrado!: Produto;
+
+
+  //Input de quantidade
   quantidade: number = 1;
 
   aumentar() {  

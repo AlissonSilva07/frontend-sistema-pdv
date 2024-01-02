@@ -4,7 +4,7 @@
             <app-input [listaProdutos]="produtos" (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
             <app-detalhes-do-produto class="flex-1"></app-detalhes-do-produto>
             <div class="w-full flex items-center justify-between gap-8">
-                <app-input-quantidade></app-input-quantidade>
+                <app-input-quantidade [produtoFiltrado]="produtoFilter"></app-input-quantidade>
                 <app-button-icon textoExibicao="Adicionar" cor="azul" class="flex-1"></app-button-icon>
             </div>
         </div>

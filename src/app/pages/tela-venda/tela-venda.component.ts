@@ -9,7 +9,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class TelaVendaComponent {
   produtos: Produto[] = [];
-  produtosFilter: Produto[] = [];
+  produtoFilter!: Produto;
 
   constructor(private produtoService: ProdutoService) {}
 
@@ -30,7 +30,6 @@ export class TelaVendaComponent {
   //Filtrar Produtos
   produtoFiltradoReceiver(produtoFiltrado: any): void {
     console.log(produtoFiltrado)
-    this.produtosFilter = this.produtos.filter(p => p.idProduto == produtoFiltrado);
   }
 
   exibeReload: boolean = false;
