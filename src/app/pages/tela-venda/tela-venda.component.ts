@@ -26,7 +26,7 @@ export class TelaVendaComponent {
           this.produtoPesquisa = res;
         },
         error: err => {
-          console.log(err);
+          this.msgErro = err.error;
         }
       })
   }
