@@ -21,6 +21,7 @@ export class TelaVendaComponent {
       .subscribe({
         next: res => {
           this.produtoPesquisa = res;
+          this.error = false;
         },
         error: err => {
           this.msgRetorno = err.error;
