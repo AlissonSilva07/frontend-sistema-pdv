@@ -4,8 +4,8 @@
             <app-input (produtoFiltrado)="produtoFiltradoReceiver($event)" texto="Cód. do Produto"></app-input>
             <app-detalhes-do-produto [produtoDetalhe]="produtoPesquisa" [msgRetorno]="msgRetorno" [error]="error" class="flex-1"></app-detalhes-do-produto>
             <div class="w-full flex items-center justify-between gap-8">
-                <app-input-quantidade></app-input-quantidade>
-                <app-button-icon textoExibicao="Adicionar" cor="azul" class="flex-1"></app-button-icon>
+                <app-input-quantidade (totalContador)="quantidadeReceiver($event)"></app-input-quantidade>
+                <app-button-icon (click)="mostrarQuantidade()" textoExibicao="Adicionar" cor="azul" class="flex-1"></app-button-icon>
             </div>
         </div>
         <div class="h-full w-full flex flex-col gap-4">

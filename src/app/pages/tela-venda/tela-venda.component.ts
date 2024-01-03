@@ -34,4 +34,16 @@ export class TelaVendaComponent {
     this.buscarProdutoPorID(produtoFiltrado);
   }
 
+  quantidadeReceiver(quantidade: any): void {
+    this.quantidadeInput = quantidade;
+  }
+
+  quantidadeInput!: number;
+
+  mostrarQuantidade() {
+    console.log(this.quantidadeInput)
+  }
+
+  //algoritmo lista de produtos
+
 }
