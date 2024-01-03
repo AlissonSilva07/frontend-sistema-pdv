@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Produto } from 'src/app/models/Produto.model';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -9,9 +9,10 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
   styleUrls: []
 })
 export class DetalhesDoProdutoComponent {
+  faCircleExclamation = faCircleExclamation;
   faMagnifyingGlass = faMagnifyingGlass;
 
   @Input() produtoDetalhe!: Produto;
-  @Input() erro!: boolean;
-  @Input() msg!: string;
+  @Input() msgRetorno!: any;
+  @Input() error!: boolean;
 }

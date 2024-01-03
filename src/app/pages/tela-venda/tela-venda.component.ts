@@ -10,23 +10,21 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class TelaVendaComponent {
 
   produtoPesquisa!: Produto;
-  erro: boolean = false;
-  msgErro!: string;
+  msgRetorno!: string;
+  error!: boolean;
 
   constructor(private produtoService: ProdutoService) {}
-
-  ngOnInit(): void {}
 
   //Buscar produto por ID
   buscarProdutoPorID(idFiltrar: number) {
     return this.produtoService.produtoPorID(idFiltrar)
       .subscribe({
         next: res => {
-          console.log(res);
           this.produtoPesquisa = res;
         },
         error: err => {
-          this.msgErro = err.error;
+          this.msgRetorno = err.error;
+          this.error = true;
         }
       })
   }
