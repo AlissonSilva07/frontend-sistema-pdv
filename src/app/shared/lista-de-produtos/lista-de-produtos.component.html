@@ -1,6 +1,6 @@
 <div class="h-full flex flex-col items-center py-4 px-8 short:px-4 gap-4 bg-white rounded-xl shadow-padrao border">
     <p class="text-sm text-cinza-400">Lista de Produtos</p>
-    <table class="table-auto text-center w-full">
+    <table *ngIf="lista.length > 0; else default" class="table-auto text-center w-full">
         <tr class="text-sm text-white bg-roxo">
             <td>Item</td>
             <td>Código</td>
@@ -9,20 +9,19 @@
             <td>Valor Unit.</td>
             <td>Total</td>
             </tr>
-        <ng-container *ngIf="lista.length > 0; else default">
-            <tr *ngFor="let item of lista" class="p-1 text-sm text-cinza-600 font-medium">
-                <td>{{ item.getIdItem() }}</td>
-                <td>{{ item.getCodigo() }}</td>
-                <td>{{ item.getTitulo() }}</td>
-                <td>{{ item.getQtd() }}</td>
-                <td>{{ item.getVal() }}</td>
-                <td>{{ item.getTotal() }}</td>
-            </tr>
-        </ng-container>
-        <ng-template class="my-auto" #default>
-            <tr class="col-span-full">
-                <td class="text-cinza-400 text-center">Adicione itens ao carrinho.</td>
-            </tr>
-        </ng-template>
+        <tr *ngFor="let item of lista" class="p-1 text-sm text-cinza-600 font-medium">
+            <td>{{ item.getIdItem() }}</td>
+            <td>{{ item.getCodigo() }}</td>
+            <td>{{ item.getTitulo() }}</td>
+            <td>{{ item.getQtd() }}</td>
+            <td>{{ item.getVal() }}</td>
+            <td>{{ item.getTotal() }}</td>
+        </tr>        
     </table>
+    <ng-template #default>
+        <div class="my-auto flex flex-col items-center gap-2">
+            <fa-icon [icon]="faShoppingCart" class="text-3xl text-cinza-400"></fa-icon>
+            <p class="text-cinza-400 text-center">Adicione itens ao carrinho.</p>
+        </div>
+    </ng-template>
 </div>
