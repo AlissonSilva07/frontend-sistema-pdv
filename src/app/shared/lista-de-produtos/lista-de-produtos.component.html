@@ -1,4 +1,8 @@
-<div class="h-full flex flex-col items-center py-4 px-8 short:px-4 gap-4 bg-white rounded-xl shadow-padrao border">
+<div class="h-full flex flex-col items-center py-4 px-8 short:px-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
+    <button (click)="esvaziarLista()" *ngIf="reset" class="absolute top-4 right-8 short:right-4 px-2 py-1 rounded-lg bg-vermelho flex items-center gap-2">
+        <fa-icon [icon]="faTrashCan" class="text-xs text-white"></fa-icon>
+        <p class="text-xs text-white">Esvaziar lista</p>
+    </button>
     <p class="text-sm text-cinza-400">Lista de Produtos</p>
     <table *ngIf="lista.length > 0; else default" class="table-auto text-center w-full">
         <tr class="text-sm text-white bg-roxo">
@@ -21,7 +25,7 @@
     <ng-template #default>
         <div class="my-auto flex flex-col items-center gap-2">
             <fa-icon [icon]="faShoppingCart" class="text-3xl text-cinza-400"></fa-icon>
-            <p class="text-cinza-400 text-center">Adicione itens ao carrinho.</p>
+            <p class="text-sm text-cinza-400 text-center">Adicione itens ao carrinho.</p>
         </div>
     </ng-template>
 </div>

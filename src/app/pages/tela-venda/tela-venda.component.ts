@@ -43,17 +43,24 @@ export class TelaVendaComponent {
   //Contador de Input
   quantidadeInput!: number;
 
-  
+  //Algoritmo que constrói a lista de produtos
   carr: ProdutoCarrinho[] = [];
+  exibeResetCarrinho: boolean = false;
 
   adicionarAoCarrinho(): void {
     if (this.produtoPesquisa) {
       let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, (this.produtoPesquisa.valUnitario * this.quantidadeInput));
       this.carr.push(prod);
+      this.exibeResetCarrinho = true;
     }
     
     console.log(this.carr)
   }
 
-  //algoritmo lista de produtos
+  esvaziaReceiver(esvazia: boolean): void {
+    if (esvazia == true) {
+      this.carr = [];
+      this.exibeResetCarrinho = false;
+    }
+  }
 }
