@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
 
 @Component({
   selector: 'app-lista-de-produtos',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: []
 })
 export class ListaDeProdutosComponent {
-
+  @Input() lista!: ProdutoCarrinho[];
 }
