@@ -14,12 +14,12 @@ export class InputQuantidadeComponent {
   quantidadeAtual: number = 1;
 
   aumentar() {  
-      this.quantidadeAtual++;
-      this.totalContador.emit(this.quantidadeAtual);
+    this.quantidadeAtual++;
+    this.totalContador.emit(this.quantidadeAtual);
   }
 
   diminuir() {
-      this.quantidadeAtual--;
-      this.totalContador.emit(this.quantidadeAtual);
+    this.quantidadeAtual--;
+    this.totalContador.emit(this.quantidadeAtual);
   }
 }

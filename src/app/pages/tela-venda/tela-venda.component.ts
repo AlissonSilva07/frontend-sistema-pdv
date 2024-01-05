@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
+import { ListaProdutosService } from 'src/app/services/lista-produtos.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class TelaVendaComponent {
   msgRetorno!: string;
   error!: boolean;
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService,
+              private listaService: ListaProdutosService) {}
 
   //Buscar produto por ID
   buscarProdutoPorID(idFiltrar: number) {
@@ -36,30 +38,30 @@ export class TelaVendaComponent {
     this.buscarProdutoPorID(produtoFiltrado);
   }
 
-  quantidadeReceiver(quantidade: any): void {
+  quantidadeReceiver(quantidade: number): void {
     this.quantidadeInput = quantidade;
+    console.log(quantidade)
   }
 
   //Contador de Input
-  quantidadeInput!: number;
+  quantidadeInput: number = 1;
 
   //Algoritmo que constrói a lista de produtos
-  carr: ProdutoCarrinho[] = [];
+  carr: ProdutoCarrinho[] = this.listaService.getLista();
   exibeResetCarrinho: boolean = false;
 
   adicionarAoCarrinho(): void {
     if (this.produtoPesquisa) {
       let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, (this.produtoPesquisa.valUnitario * this.quantidadeInput));
-      this.carr.push(prod);
+      this.listaService.adicionarProduto(prod);
       this.exibeResetCarrinho = true;
     }
-    
-    console.log(this.carr)
   }
 
   esvaziaReceiver(esvazia: boolean): void {
-    if (esvazia == true) {
-      this.carr = [];
+    if (esvazia) {
+      this.listaService.limparLista();
+      this.carr = this.listaService.getLista();
       this.exibeResetCarrinho = false;
     }
   }
