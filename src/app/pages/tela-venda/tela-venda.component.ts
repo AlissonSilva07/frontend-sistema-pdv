@@ -40,7 +40,6 @@ export class TelaVendaComponent {
 
   quantidadeReceiver(quantidade: number): void {
     this.quantidadeInput = quantidade;
-    console.log(quantidade)
   }
 
   //Contador de Input
@@ -48,6 +47,7 @@ export class TelaVendaComponent {
 
   //Algoritmo que constrói a lista de produtos
   carr: ProdutoCarrinho[] = this.listaService.getLista();
+  totalPreco: number = this.listaService.getTotalPreco();
   exibeResetCarrinho: boolean = false;
 
   adicionarAoCarrinho(): void {
@@ -55,6 +55,7 @@ export class TelaVendaComponent {
       let arredondado: number = Math.round((this.produtoPesquisa.valUnitario * this.quantidadeInput)* 100) / 100;
       let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, arredondado);
       this.listaService.adicionarProduto(prod);
+      this.totalPreco = this.listaService.getTotalPreco();
       this.exibeResetCarrinho = true;
     }
   }
@@ -63,6 +64,7 @@ export class TelaVendaComponent {
     if (esvazia) {
       this.listaService.limparLista();
       this.carr = this.listaService.getLista();
+      this.totalPreco = this.listaService.getTotalPreco();
       this.exibeResetCarrinho = false;
     }
   }
