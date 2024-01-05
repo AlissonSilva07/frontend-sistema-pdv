@@ -23,12 +23,20 @@ export class ListaProdutosService {
     return this.lista;
   }
 
-  getTotal(): number {
-    let total: number = 0;
+  getTotalPreco(): number {
+    let totalPreco: number = 0;
     for(let preco of this.lista) {
-      total = total + preco.getTotal();
+      totalPreco = totalPreco + preco.getTotal();
     }
-    return total;
+    return totalPreco;
+  }
+
+  getTotalItens(): number {
+    let totalItens: number = 0;
+    for(let item of this.lista) {
+      totalItens = totalItens + item.getQtd();
+    }
+    return totalItens;
   }
 
 }

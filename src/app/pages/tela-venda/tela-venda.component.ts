@@ -52,7 +52,8 @@ export class TelaVendaComponent {
 
   adicionarAoCarrinho(): void {
     if (this.produtoPesquisa) {
-      let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, (this.produtoPesquisa.valUnitario * this.quantidadeInput));
+      let arredondado: number = Math.round((this.produtoPesquisa.valUnitario * this.quantidadeInput)* 100) / 100;
+      let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, arredondado);
       this.listaService.adicionarProduto(prod);
       this.exibeResetCarrinho = true;
     }
