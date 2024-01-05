@@ -23,4 +23,12 @@ export class ListaProdutosService {
     return this.lista;
   }
 
+  getTotal(): number {
+    let total: number = 0;
+    for(let preco of this.lista) {
+      total = total + preco.getTotal();
+    }
+    return total;
+  }
+
 }
