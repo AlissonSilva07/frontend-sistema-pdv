@@ -52,10 +52,9 @@ export class TelaVendaComponent {
 
   adicionarAoCarrinho(): void {
     if (this.produtoPesquisa) {
-      let arredondado: number = Math.round((this.produtoPesquisa.valUnitario * this.quantidadeInput)* 100) / 100;
-      let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, arredondado);
+      let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, this.arredondaPreço(this.produtoPesquisa.valUnitario * this.quantidadeInput));
       this.listaService.adicionarProduto(prod);
-      this.totalPreco = this.listaService.getTotalPreco();
+      this.totalPreco = this.arredondaPreço(this.listaService.getTotalPreco());
       this.exibeResetCarrinho = true;
     }
   }
@@ -67,5 +66,11 @@ export class TelaVendaComponent {
       this.totalPreco = this.listaService.getTotalPreco();
       this.exibeResetCarrinho = false;
     }
+  }
+
+  arredondaPreço(preco: number): number {
+    let arredondado: number;
+    arredondado = Math.round(preco * 100) / 100;
+    return arredondado;
   }
 }

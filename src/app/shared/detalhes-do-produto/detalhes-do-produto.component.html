@@ -9,11 +9,11 @@
         </div>
         <div class="flex flex-col items-center">
             <p class="text-xs text-cinza-400">Título</p>
-            <p class="text-cinza-600 text-2xl short:text-xl font-medium">{{ produtoDetalhe.nomeProduto }}</p>
+            <p class="text-cinza-600 text-center text-2xl short:text-xl font-medium">{{ produtoDetalhe.nomeProduto }}</p>
         </div>
         <div class="flex flex-col items-center">
             <p class="text-xs text-cinza-400">Categoria</p>
-            <p class="text-cinza-600 text-2xl short:text-xl font-medium">{{ produtoDetalhe.categoria }}</p>
+            <p class="text-cinza-600 text-center text-2xl short:text-xl font-medium">{{ produtoDetalhe.categoria }}</p>
         </div>
         <div class="flex flex-col items-center">
             <p class="text-xs text-cinza-400">Valor Unitário</p>
@@ -21,8 +21,8 @@
         </div>
     </div>
     <div *ngIf="error && msgRetorno" class="my-auto flex flex-col items-center gap-2">
-        <fa-icon [icon]="faCircleExclamation" class="text-3xl text-vermelho"></fa-icon>
-        <p class="my-auto text-center text-vermelho">{{ msgRetorno }}</p>
+        <fa-icon [icon]="faCircleExclamation" class="text-2xl text-vermelho"></fa-icon>
+        <p class="my-auto text-sm text-center text-vermelho">{{ msgRetorno }}</p>
     </div>
     <p *ngIf="!produtoDetalhe && !error" class="my-auto p-2 text-sm text-center text-cinza-400">Digite o código do produto acima e aperte o botão da lupa <fa-icon [icon]="faMagnifyingGlass"></fa-icon> para pesquisar.</p>
 </div>
