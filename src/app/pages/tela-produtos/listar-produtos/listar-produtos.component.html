@@ -11,7 +11,7 @@
         </button>
         <app-input (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
     </div>
-    <div class="w-full h-full flex flex-col items-center gap-4 bg-white rounded-xl shadow-padrao border relative overflow-y-scroll">
+    <div class="w-full h-full flex flex-col items-center gap-4 bg-white rounded-xl shadow-padrao border relative overflow-y-scroll no-scrollbar">
         <ng-template #elseBlock>
             <div class="mx-auto my-auto flex flex-col items-center gap-4">
                 <fa-icon [icon]="faFaceSadTear" class="text-cinza-400 text-3xl"></fa-icon>

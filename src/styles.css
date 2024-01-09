@@ -5,26 +5,38 @@
 @tailwind components;
 @tailwind utilities;
 
-/* width */
+/* width
 ::-webkit-scrollbar {
     width: 8px;
 }
  
-/* Track */
+Track
 ::-webkit-scrollbar-track {
     display: none;
     background: #f1f1f1;
 }
  
-/* Handle */
+Handle
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 5px;
 }
  
-/* Handle on hover */
+Handle on hover
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}*/
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+   /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+  }
 }
 
 body {
