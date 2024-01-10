@@ -69,8 +69,7 @@ export class TelaVendaComponent {
   }
 
   arredondaPreço(preco: number): number {
-    let arredondado: number;
-    arredondado = Math.round(preco * 100) / 100;
-    return arredondado;
+    preco.toPrecision(2);
+    return preco;
   }
 }

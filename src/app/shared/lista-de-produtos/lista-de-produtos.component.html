@@ -18,8 +18,8 @@
             <td>{{ item.getCodigo() }}</td>
             <td>{{ item.getTitulo() }}</td>
             <td>{{ item.getQtd() }}</td>
-            <td>{{ item.getVal() }}</td>
-            <td>{{ item.getTotal() }}</td>
+            <td>{{ item.getVal() | currency: 'BRL' }}</td>
+            <td>{{ item.getTotal() | currency: 'BRL' }}</td>
         </tr>        
     </table>
     <ng-template #default>

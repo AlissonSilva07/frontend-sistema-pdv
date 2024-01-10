@@ -41,7 +41,7 @@
                     <td>{{ produto.nomeProduto }}</td>
                     <td>{{ produto.categoria }}</td>
                     <td>{{ produto.descricao }}</td>
-                    <td>{{ produto.valUnitario }}</td>
+                    <td>{{ produto.valUnitario | currency: 'BRL' }}</td>
                     <td class="flex items-center gap-4 justify-center">
                         <button class="p-1" (click)="abrirDialogoExcluir(produto.idProduto)">
                             <fa-icon [icon]="faTrash" class="text-vermelho hover:brightness-90 transition-all delay-75"></fa-icon>
