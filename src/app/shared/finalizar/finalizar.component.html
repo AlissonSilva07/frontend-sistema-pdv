@@ -1,5 +1,5 @@
 <div class="bg-white py-4 px-8 short:px-4 flex justify-between gap-8 rounded-2xl shadow-padrao border">
-        <div class="flex flex-col items-start gap-2">
+        <div class="flex flex-col items-start justify-center gap-2">
             <div class="flex gap-4 items-center">
                 <p class="w-16 text-sm text-cinza-400 font-medium">Itens:</p>
                 <p *ngIf="totalItens; else itensZerado" class="text-cinza-400 text-sm font-medium">{{ totalItens }}</p>
@@ -9,15 +9,15 @@
             </div>
             <div class="flex gap-4 items-start">
                 <p class="w-16 text-sm text-cinza-400 font-medium">Subtotal:</p>
-                <p *ngIf="totalPreco; else precoZerado" class="text-cinza-600 text-3xl font-medium">{{ totalPreco | currency: 'BRL' }}</p>
+                <p *ngIf="totalPreco; else precoZerado" class="text-cinza-600 text-2xl font-medium">{{ totalPreco | currency: 'BRL' }}</p>
                 <ng-template #precoZerado>
-                    <p class="text-cinza-600 text-3xl font-medium">0,00</p>
+                    <p class="text-cinza-600 text-2xl font-medium">R$0,00</p>
                 </ng-template>
             </div>
         </div>
         <div class="w-1 h-18 bg-cinza-400"></div>
-        <div class="flex items-start gap-2">
-            <div class="h-full flex flex-col justify-around gap-2">
+        <div class="flex items-center gap-2">
+            <div class="h-full flex flex-col justify-center gap-2">
                 <div class="flex gap-4">
                     <p class="text-sm text-cinza-400 font-medium">Recebido:</p>
                     <input type="text" placeholder="0,00" class="text-xl w-full outline-none">
@@ -27,19 +27,14 @@
                     <p class="text-xs font-bold text-branco group-hover:brightness-90 transition-all ease-in-out delay-75">Calcular troco</p>
                 </button>
             </div>
-            <div class="w-full h-full border border-roxo flex flex-col items-center justify-around rounded-lg">
-                <p class="text-sm text-roxo font-medium">Troco:</p>
-                <p class="text-roxo text-xl font-medium">2,00</p>
+            <div class="w-full h-full flex flex-col items-center justify-center gap-2 rounded-lg">
+                <p class="text-sm text-cinza-400 font-medium">Troco:</p>
+                <p class="text-2xl font-medium">R$2,00</p>
             </div>
         </div>
         <div class="w-1 h-18 bg-cinza-400"></div>
-        <div class="flex flex-col justify-around">
+        <div class="flex flex-col gap-1">
             <app-main-button textoExibir="Finalizar" textoCor="text-branco" bgCor="bg-verde"></app-main-button>
             <app-main-button textoExibir="Cancelar" textoCor="text-branco" bgCor="bg-vermelho"></app-main-button>
         </div>
 </div>
-
-
-<!-- <div class="group flex items-start gap-2">
-    
-</div> -->
