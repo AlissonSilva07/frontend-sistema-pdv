@@ -78,6 +78,10 @@ export class TelaVendaComponent {
     this.troco = this.listaService.getTroco(recebido);
   }
 
+  adicionaVendaReceiver(finaliza: boolean) {
+    finaliza ? console.log('finalizou') : console.log('')
+  }
+
 
   //Funcão auxiliar pra arredondamento de moeda
   arredondaPreço(preco: number): number {

@@ -14,8 +14,13 @@ export class FinalizarComponent {
   @Input() totalItens!: number;
   @Input() trocoRecebido: number = 0;
   @Output() mandaTroco = new EventEmitter();
+  @Output() adicionaVenda = new EventEmitter();
 
   calculaTroco(): void {
     this.mandaTroco.emit(this.troco);
+  }
+
+  adicionarVenda(): void {
+    this.adicionaVenda.emit(true);
   }
 }
