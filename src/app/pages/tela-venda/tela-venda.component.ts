@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
+import { Venda } from 'src/app/models/Venda.model';
 import { ListaProdutosService } from 'src/app/services/lista-produtos.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -79,7 +80,17 @@ export class TelaVendaComponent {
   }
 
   adicionaVendaReceiver(finaliza: boolean) {
-    finaliza ? console.log('finalizou') : console.log('')
+
+    if (finaliza) {
+      //Buca a data atual
+      let dataAtual = new Date().toJSON().slice(0, 10);
+
+      let novaVenda = new Venda(dataAtual, this.listaService.getTotalPreco(), this.troco, this.listaService.getLista());
+      console.log(novaVenda)
+    }
+
+    
+    
   }
 
 

@@ -39,8 +39,4 @@ export class ProdutoCarrinho {
     public getTotal(): number {
         return this.total;
     }
-
-
-
-
 }
