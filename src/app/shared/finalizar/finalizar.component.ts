@@ -10,4 +10,5 @@ export class FinalizarComponent {
   faCalculator = faCalculator;
 
   @Input() totalPreco!: number;
+  @Input() totalItens!: number;
 }

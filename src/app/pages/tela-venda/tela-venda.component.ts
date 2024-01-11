@@ -48,6 +48,7 @@ export class TelaVendaComponent {
   //Algoritmo que constrói a lista de produtos
   carr: ProdutoCarrinho[] = this.listaService.getLista();
   totalPreco: number = this.listaService.getTotalPreco();
+  totalItens: number = this.listaService.getTotalItens();
   exibeResetCarrinho: boolean = false;
 
   adicionarAoCarrinho(): void {
@@ -55,6 +56,7 @@ export class TelaVendaComponent {
       let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, this.arredondaPreço(this.produtoPesquisa.valUnitario * this.quantidadeInput));
       this.listaService.adicionarProduto(prod);
       this.totalPreco = this.arredondaPreço(this.listaService.getTotalPreco());
+      this.totalItens = this.listaService.getTotalItens();
       this.exibeResetCarrinho = true;
     }
   }
@@ -64,6 +66,7 @@ export class TelaVendaComponent {
       this.listaService.limparLista();
       this.carr = this.listaService.getLista();
       this.totalPreco = this.listaService.getTotalPreco();
+      this.totalItens = this.listaService.getTotalItens();
       this.exibeResetCarrinho = false;
     }
   }
