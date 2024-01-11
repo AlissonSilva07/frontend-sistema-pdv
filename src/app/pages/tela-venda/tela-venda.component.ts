@@ -80,17 +80,15 @@ export class TelaVendaComponent {
   }
 
   adicionaVendaReceiver(finaliza: boolean) {
-
-    if (finaliza) {
+    if (finaliza && this.carr.length > 0 && this.troco > 0) {
       //Buca a data atual
       let dataAtual = new Date().toJSON().slice(0, 10);
 
       let novaVenda = new Venda(dataAtual, this.listaService.getTotalPreco(), this.troco, this.listaService.getLista());
       console.log(novaVenda)
+    } else {
+      alert('Você não finalizou a venda.')
     }
-
-    
-    
   }
 
 

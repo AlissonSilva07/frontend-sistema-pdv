@@ -6,15 +6,19 @@ import { Venda } from '../models/Venda.model';
 })
 export class VendaService {
 
-  venda!: Venda;
+  vendas!: Venda[];
 
   constructor() { }
 
   adicionaVenda(vendaAdc: Venda): void {
-    this.venda = vendaAdc;
+    this.vendas.push(vendaAdc);
   }
 
-  imprimeVenda():void {
-    console.log(this.venda);
+  getVendas(): Venda[] {
+    return this.vendas;
+  }
+
+  imprimeVendas():void {
+    console.log(this.vendas);
   }
 }
