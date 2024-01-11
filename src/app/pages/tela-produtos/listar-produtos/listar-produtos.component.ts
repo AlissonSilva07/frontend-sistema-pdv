@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faTrashCan, faFaceSadTear, faClose, faCircleExclamation, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -19,9 +19,11 @@ export class ListarProdutosComponent {
   faEdit = faEdit;
   faTrashCan = faTrashCan;
   faCircleExclamation = faCircleExclamation;
+  faRotateRight = faRotateRight;
 
-  produtos?: Produto[];
-  listaCategoria?: string[] = [];
+  produtos: Produto[] = [];
+  produtosFilter: Produto[] = [];
+  listaCategoria: string[] = [];
 
   constructor(private produtoService: ProdutoService) {}
 
@@ -36,7 +38,7 @@ export class ListarProdutosComponent {
     .subscribe({
       next: data => {
         this.produtos = data;
-        console.log(this.produtos)
+        this.produtosFilter = this.produtos;
       },
       error: e => console.log(e)
     });
@@ -53,15 +55,53 @@ export class ListarProdutosComponent {
     })
   }
 
-  //Deletar Produto
-  idDeletar!: number[];
+  //Filtrar Produtos
+  produtoFiltradoReceiver(produtoFiltrado: any): void {
+    console.log(produtoFiltrado)
+    this.produtosFilter = this.produtos.filter(p => p.idProduto == produtoFiltrado);
+  }
 
-  apagarPorID(): void {
-    this.produtoService.deletarProduto(this.idDeletar)
+  exibeReload: boolean = false;
+  exibirReload(reload: boolean): void {
+    this.exibeReload = reload;
+  }
+
+  exibeFalha: boolean = false;
+  exibirFalha(falha: boolean): void {
+    this.exibeFalha = falha;
+    setTimeout(() => {
+      this.exibeFalha = false;
+    }, 2000);
+  }
+
+  recarregarLista(): void {
+    this.listarProdutos();
+    this.exibeReload = false;
+  }
+
+  //Deletar Produtos
+  arrayDeletar: number[] = [];
+
+  apagarSelecionados(): void {
+    const selecionados = this.produtos.filter(p => p.isChecked);
+    const ids: (undefined | number)[] = selecionados.map(i => i.idProduto);
+    
+    this.produtoService.deletarProduto(ids)
     .subscribe({
       next: res => {
-        console.log("O produto de id " + this.idDeletar + "foi apagado.");
         window.location.reload();
+        this.arrayDeletar = [];
+      },
+      error: e => console.error(e)
+    })
+  }
+
+  apagarPorID(): void {
+    this.produtoService.deletarProduto(this.arrayDeletar)
+    .subscribe({
+      next: res => {
+        window.location.reload();
+        this.arrayDeletar = [];
       },
       error: e => console.error(e)
     })
@@ -84,7 +124,7 @@ export class ListarProdutosComponent {
     })
   }
 
-  onSubmitAtualizar() {
+  onSubmitAtualizar(): void {
     if (this.produtoFormAtualizar.valid) {
       this.atualizarPorId();
       this.resetForm();
@@ -99,36 +139,44 @@ export class ListarProdutosComponent {
   //Contagem de selects
   contagemSelect!: number;
 
-  contar() {
+  contar(): void {
     this.contagemSelect = 0;
-    this.produtos?.forEach(i => {
-      if (i['isChecked']) {
-        this.contagemSelect++;
-      }
+    this.produtos.forEach(i => {
+      i.isChecked == true ? this.contagemSelect++ : this.contagemSelect;
     })
   }
 
   //Controles de popup
   openPopUpExcluir: boolean = false;
 
-  abrirDialogoExcluir(idExcluir: any) {
+  abrirDialogoExcluir(idExcluir: any): void {
     this.openPopUpExcluir = true;
-    this.idDeletar = idExcluir;
+    this.arrayDeletar.push(idExcluir);
   }
 
-  fecharDialogoExcluir() {
+  fecharDialogoExcluir(): void {
     this.openPopUpExcluir = false;
+  }
+
+  openPopUpExcluirVarios: boolean = false;
+
+  abrirDialogoExcluirVarios(): void {
+    this.openPopUpExcluirVarios = true;
+  }
+
+  fecharDialogoExcluirVarios(): void {
+    this.openPopUpExcluirVarios = false;
   }
 
   openPopUpEditar: boolean = false;
 
-  abrirDialogoEditar(idEditar: any, nomeEditar: any) {
+  abrirDialogoEditar(idEditar: any, nomeEditar: any): void {
     this.openPopUpEditar = true;
     this.idAtualizar = idEditar;
     this.nomeProdutoAtualizar = nomeEditar;
   }
 
-  fecharDialogoEditar() {
+  fecharDialogoEditar(): void {
     this.openPopUpEditar = false;
   }
 
@@ -156,7 +204,7 @@ export class ListarProdutosComponent {
     return this.produtoFormAtualizar.get('valUnitario');
   }
   
-  resetForm() {
+  resetForm(): void {
     this.produtoFormAtualizar.reset();
   }
 }

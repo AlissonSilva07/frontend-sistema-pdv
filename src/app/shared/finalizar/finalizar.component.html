@@ -1,7 +1,10 @@
 <div class="bg-white py-4 px-8 short:px-4 flex justify-between gap-8 rounded-2xl shadow-padrao border">
         <div class="flex gap-4 items-start">
             <p class="text-sm text-cinza-400 font-medium">Subtotal:</p>
-            <p class="text-cinza-600 text-5xl short:text-4xl font-medium py-4">3,00</p>
+            <p *ngIf="totalPreco; else precoZerado" class="text-cinza-600 text-5xl short:text-4xl font-medium py-4">{{ totalPreco | currency: 'BRL' }}</p>
+            <ng-template #precoZerado>
+                <p class="text-cinza-600 text-5xl short:text-4xl font-medium py-4">0,00</p>
+            </ng-template>
         </div>
         <div class="w-[1px] h-[86px] bg-cinza-400"></div>
         <div class="flex-1 flex gap-4 align-top">

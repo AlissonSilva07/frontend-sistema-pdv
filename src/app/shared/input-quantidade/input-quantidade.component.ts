@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Produto } from 'src/app/models/Produto.model';
 
 @Component({
   selector: 'app-input-quantidade',
@@ -6,13 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: []
 })
 export class InputQuantidadeComponent {
-  quantidade: number = 1;
+
+  @Output() totalContador = new EventEmitter();
+
+  //Input de quantidade
+  quantidadeAtual: number = 1;
 
   aumentar() {  
-      this.quantidade++;
+    this.quantidadeAtual++;
+    this.totalContador.emit(this.quantidadeAtual);
   }
 
   diminuir() {
-      this.quantidade--;
+    this.quantidadeAtual--;
+    this.totalContador.emit(this.quantidadeAtual);
   }
 }

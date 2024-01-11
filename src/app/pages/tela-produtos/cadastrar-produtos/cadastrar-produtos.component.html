@@ -4,40 +4,48 @@
         <div class="h-full w-2/6 p-4 rounded-l-lg">
             <form [formGroup]="produtoForm" class="flex flex-col items-center gap-4">
                 <div class="w-full flex flex-col gap-2">
-                    <label for="nomeProduto" class="text-sm font-bold">Título</label>
-                    <input id="nomeProduto" type="text" formControlName="nomeProduto" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
-                    <div *ngIf="nomeProduto?.invalid && (nomeProduto?.dirty || nomeProduto?.touched)">
-                        <div *ngIf="nomeProduto?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
-                        <div *ngIf="nomeProduto?.errors?.['minlength']" class="text-xs text-vermelho">Mínimo de 6 caracteres.</div>
-                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="nomeProduto" class="text-sm font-bold">Título</label>
+                        <div *ngIf="nomeProduto?.invalid && (nomeProduto?.dirty || nomeProduto?.touched)">
+                            <div *ngIf="nomeProduto?.errors?.['required']" class="text-xs text-vermelho">* Este campo não pode estar vazio.</div>
+                            <div *ngIf="nomeProduto?.errors?.['minlength']" class="text-xs text-vermelho">* Mínimo de 6 caracteres.</div>
+                        </div>
+                    </div>                    
+                    <input id="nomeProduto" type="text" placeholder="Ex.: Farinha Tijuca" formControlName="nomeProduto" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="categoria" class="text-sm font-bold">Categoria</label>
+                    <div class="flex items-center justify-between">
+                        <label for="categoria" class="text-sm font-bold">Categoria</label>
+                        <div *ngIf="categoria?.invalid && (categoria?.dirty || categoria?.touched)">
+                            <div *ngIf="categoria?.errors?.['required']" class="text-xs text-vermelho">* Escolha uma das opções.</div>
+                        </div>
+                    </div>                    
                     <select class="form-control" id="categoria" formControlName="categoria" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
                         <option value="" selected disabled hidden>Selecione uma das opções</option>
                         <option *ngFor="let c of listaCategoria" [ngValue]="c" class="text-sm">{{c}}</option>
-                    </select>
-                    <div *ngIf="categoria?.invalid && (categoria?.dirty || categoria?.touched)">
-                        <div *ngIf="categoria?.errors?.['required']" class="text-xs text-vermelho">Escolha uma das opções.</div>
-                    </div>
+                    </select>                    
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="descricao" class="text-sm font-bold">Descrição</label>
-                    <textarea id="descricao" formControlName="descricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
-                    <div *ngIf="descricao?.invalid && (descricao?.dirty || descricao?.touched)">
-                        <div *ngIf="descricao?.errors?.['maxlength']" class="text-xs text-vermelho">Máximo de 100 caracteres.</div>
-                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="descricao" class="text-sm font-bold">Descrição</label>
+                        <div *ngIf="descricao?.invalid && (descricao?.dirty || descricao?.touched)">
+                            <div *ngIf="descricao?.errors?.['maxlength']" class="text-xs text-vermelho">* Máximo de 100 caracteres.</div>
+                        </div>
+                    </div>                    
+                    <textarea id="descricao" placeholder="Ex.: 200g" formControlName="descricao" rows="2" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl"></textarea>
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="valUnitario" class="text-sm font-bold">Valor Unitário</label>
-                    <input id="valUnitario" type="number" formControlName="valUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
-                    <div *ngIf="valUnitario?.invalid && (valUnitario?.dirty || valUnitario?.touched)">
-                        <div *ngIf="valUnitario?.errors?.['required']" class="text-xs text-vermelho">Este campo não pode estar vazio.</div>
-                        <div *ngIf="valUnitario?.errors?.['min']" class="text-xs text-vermelho">Não são permitidos valores abaixo de 0.01.</div>
-                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="valUnitario" class="text-sm font-bold">Valor Unitário</label>
+                        <div *ngIf="valUnitario?.invalid && (valUnitario?.dirty || valUnitario?.touched)">
+                            <div *ngIf="valUnitario?.errors?.['required']" class="text-xs text-vermelho">* Este campo não pode estar vazio.</div>
+                            <div *ngIf="valUnitario?.errors?.['min']" class="text-xs text-vermelho">* Não são permitidos valores abaixo de 0.01.</div>
+                        </div>
+                    </div>                    
+                    <input id="valUnitario" placeholder="Ex.: 4.99" type="number" formControlName="valUnitario" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl">
                 </div>
 
                 <div class="w-full flex items-center gap-4 justify-between">

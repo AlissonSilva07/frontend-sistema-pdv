@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Produto } from '../models/Produto.model';
 
 @Injectable({
@@ -28,8 +28,8 @@ export class ProdutoService {
     return this.http.post(`${environment.baseUrl}/postar`, produto);
   }
 
-  deletarProduto(ids: number[]): Observable<number[]> {
-    return this.http.delete<number[]>(`${environment.baseUrl}/deletar/${ids}`);
+  deletarProduto(ids: (undefined | number)[]): Observable<(undefined | number)[]> {
+    return this.http.delete<(undefined | number)[]>(`${environment.baseUrl}/deletar/${ids}`);
   }
 
   atualizarProduto(idAtualizar: number, produtoAtualizar: any): Observable<any> {

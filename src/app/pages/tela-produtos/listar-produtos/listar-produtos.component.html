@@ -1,57 +1,83 @@
 <main class="w-screen h-screen pt-20 pb-14 pl-[272px] p-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <div class="flex items-center justify-between">
         <p class="text-2xl text-cinza-400 font-bold">Lista de Produtos</p>
-        <app-input texto="Cód. do Produto"></app-input>
+        <button (click)="recarregarLista()" *ngIf="exibeReload" class="py-1 px-2 flex items-center gap-2 bg-branco border-2 border-azul rounded-full transition ease-in">
+            <fa-icon [icon]="faRotateRight" class="text-azul"></fa-icon>
+            <p class="text-xs text-azul font-medium">Recarregar Lista</p>
+        </button>
+        <button *ngIf="exibeFalha" class="py-1 px-2 flex items-center gap-2 bg-branco border-2 border-vermelho rounded-full transition ease-in">
+            <fa-icon [icon]="faCircleExclamation" class="text-vermelho"></fa-icon>
+            <p class="text-xs text-vermelho font-medium">O produto pesquisado não consta na base de dados.</p>
+        </button>
+        <app-input (produtoFiltrado)="produtoFiltradoReceiver($event)" (filterSuccess)="exibirReload($event)" (filterFailure)="exibirFalha($event)" texto="Cód. do Produto"></app-input>
     </div>
-    <div class="w-full h-full flex flex-col items-center p-4 gap-4 bg-white rounded-xl shadow-padrao border relative">
+    <div class="w-full h-full flex flex-col items-center gap-4 bg-white rounded-xl shadow-padrao border relative overflow-y-scroll no-scrollbar">
         <ng-template #elseBlock>
             <div class="mx-auto my-auto flex flex-col items-center gap-4">
                 <fa-icon [icon]="faFaceSadTear" class="text-cinza-400 text-3xl"></fa-icon>
                 <p class="text-cinza-400 text-sm">Nenhum produto foi cadastrado ainda.</p>
             </div>
         </ng-template>
-        <table *ngIf="produtos?.length; else elseBlock" class="table-auto text-center w-full">
-            <tr class="text-sm text-white bg-roxo">
-                <td>Selec.</td>
-                <td>Dt. de Criação</td>
-                <td>Código</td>
-                <td>Nome</td>
-                <td>Categoria</td>
-                <td>Descrição</td>                
-                <td>Valor Unit.</td>
-                <td>Ações</td>
-            </tr>
-            <tr *ngFor="let produto of produtos" id={{produto.idProduto}} class="text-sm text-cinza-600 font-medium">
-                <td>
-                    <input type="checkbox" name="" id={{produto.idProduto}} [(ngModel)]="produto.isChecked" (ngModelChange)="contar()">
-                </td>
-                <td>{{ produto.dataCriacao }}</td>
-                <td>{{ produto.idProduto }}</td>
-                <td>{{ produto.nomeProduto }}</td>
-                <td>{{ produto.categoria }}</td>
-                <td>{{ produto.descricao }}</td>
-                <td>{{ produto.valUnitario }}</td>
-                <td class="flex items-center gap-4 justify-center">
-                    <button class="p-1" (click)="abrirDialogoExcluir(produto.idProduto)">
-                        <fa-icon [icon]="faTrash" class="text-vermelho hover:brightness-90 transition-all delay-75"></fa-icon>
-                    </button>
-                    <button class="p-1" (click)="abrirDialogoEditar(produto.idProduto, produto.nomeProduto)">
-                        <fa-icon [icon]="faEdit" class="text-verde hover:brightness-90 transition-all delay-75"></fa-icon>
-                    </button>
-                </td>
-            </tr>
+        <table *ngIf="produtosFilter?.length; else elseBlock" class="table-auto text-center w-full relative">
+            <thead class="text-white bg-roxo sticky top-0 right-4 left-4 h-8">
+                <tr class="text-sm">
+                    <th>Selec.</th>
+                    <th>Dt. de Criação</th>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>                
+                    <th>Valor Unit.</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody class="overflow-y-scroll pt-2">
+                <tr *ngFor="let produto of produtosFilter" id={{produto.idProduto}} class="overflow-y-scroll text-sm text-cinza-600 font-medium">
+                    <td>
+                        <input type="checkbox" name="" id={{produto.idProduto}} [(ngModel)]="produto.isChecked" (ngModelChange)="contar()">
+                    </td>
+                    <td>{{ produto.dataCriacao }}</td>
+                    <td>{{ produto.idProduto }}</td>
+                    <td>{{ produto.nomeProduto }}</td>
+                    <td>{{ produto.categoria }}</td>
+                    <td>{{ produto.descricao }}</td>
+                    <td>{{ produto.valUnitario | currency: 'BRL' }}</td>
+                    <td class="flex items-center gap-4 justify-center">
+                        <button class="p-1" (click)="abrirDialogoExcluir(produto.idProduto)">
+                            <fa-icon [icon]="faTrash" class="text-vermelho hover:brightness-90 transition-all delay-75"></fa-icon>
+                        </button>
+                        <button class="p-1" (click)="abrirDialogoEditar(produto.idProduto, produto.nomeProduto)">
+                            <fa-icon [icon]="faEdit" class="text-verde hover:brightness-90 transition-all delay-75"></fa-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-        <app-main-button *ngIf="contagemSelect >= 2" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
+        <app-main-button *ngIf="contagemSelect >= 2" (click)="abrirDialogoExcluirVarios()" class="absolute bottom-4 right-4 transition-all ease-in delay-75" textoExibir="Deletar Selec." bgCor="bg-vermelho" textoCor="text-white"></app-main-button>
     </div>
 </main>
 
 
 <div *ngIf="openPopUpExcluir" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
     <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
-        <p class="text-xl font-bold text-center">Deseja excluir o(os) produto(os) selecionado(os)?</p>
-        <p class="text-cinza-400 text-sm">Essa ação não poderá ser desfeita.</p>
+        <p class="text-xl font-bold text-center">Deseja excluir o produto selecionado?</p>
+        <p class="text-cinza-400 text-sm">Essa ação apagará o produto selecionado não poderá ser desfeita.</p>
         <div class="flex items-center gap-4">
             <app-main-button textoExibir="Sim" bgCor="bg-azul" textoCor="text-branco" (click)="apagarPorID()"></app-main-button>
+            <app-main-button textoExibir="Não" bgCor="bg-vermelho" textoCor="text-branco" (click)="fecharDialogoExcluir()"></app-main-button>
+        </div>
+        <button (click)="fecharDialogoExcluir()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
+            <fa-icon [icon]="faClose"></fa-icon>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="openPopUpExcluirVarios" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
+    <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
+        <p class="text-xl font-bold text-center">Deseja excluir os produtos selecionados?</p>
+        <p class="text-cinza-400 text-sm">Essa ação apagará todos os produtos selecionados e não poderá ser desfeita.</p>
+        <div class="flex items-center gap-4">
+            <app-main-button textoExibir="Sim" bgCor="bg-azul" textoCor="text-branco" (click)="apagarSelecionados()"></app-main-button>
             <app-main-button textoExibir="Não" bgCor="bg-vermelho" textoCor="text-branco" (click)="fecharDialogoExcluir()"></app-main-button>
         </div>
         <button (click)="fecharDialogoExcluir()" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
