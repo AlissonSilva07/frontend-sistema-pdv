@@ -10,7 +10,7 @@
         </div>
         <div class="h-full w-full flex flex-col gap-4">
             <app-lista-de-produtos [lista]="carr" [reset]="exibeResetCarrinho" (apagaLista)="esvaziaReceiver($event)" class="flex-1"></app-lista-de-produtos>
-            <app-finalizar [totalPreco]="totalPreco" [totalItens]="totalItens" class="flex-2"></app-finalizar>
+            <app-finalizar [totalPreco]="totalPreco" [totalItens]="totalItens" [trocoRecebido]="troco" (mandaTroco)="trocoReceiver($event)" class="flex-2"></app-finalizar>
         </div>
     </div>
 </main>

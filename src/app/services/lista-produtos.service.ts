@@ -39,4 +39,8 @@ export class ListaProdutosService {
     return totalItens;
   }
 
+  getTroco(valRecebido: number): number {
+    return valRecebido - this.getTotalPreco();
+  }
+
 }

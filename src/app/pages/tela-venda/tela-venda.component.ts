@@ -49,8 +49,10 @@ export class TelaVendaComponent {
   carr: ProdutoCarrinho[] = this.listaService.getLista();
   totalPreco: number = this.listaService.getTotalPreco();
   totalItens: number = this.listaService.getTotalItens();
+  troco!: number;
   exibeResetCarrinho: boolean = false;
 
+  //Função que adiciona o produto ao carrinho
   adicionarAoCarrinho(): void {
     if (this.produtoPesquisa) {
       let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, this.arredondaPreço(this.produtoPesquisa.valUnitario * this.quantidadeInput));
@@ -61,6 +63,7 @@ export class TelaVendaComponent {
     }
   }
 
+  //Funções vindas de output
   esvaziaReceiver(esvazia: boolean): void {
     if (esvazia) {
       this.listaService.limparLista();
@@ -71,6 +74,12 @@ export class TelaVendaComponent {
     }
   }
 
+  trocoReceiver(recebido: number): void {
+    this.troco = this.listaService.getTroco(recebido);
+  }
+
+
+  //Funcão auxiliar pra arredondamento de moeda
   arredondaPreço(preco: number): number {
     preco.toPrecision(2);
     return preco;
