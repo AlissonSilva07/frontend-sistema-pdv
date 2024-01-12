@@ -10,6 +10,8 @@ import { Produto } from 'src/app/models/Produto.model';
 export class InputComponent {
   faMagnifyingGlass = faMagnifyingGlass;
 
+  idFiltrar!: string;
+
   @Input() texto = "";
   @Output() produtoFiltrado = new EventEmitter();
   @Output() filterSuccess = new EventEmitter();
@@ -23,8 +25,10 @@ export class InputComponent {
     if (idFiltrar) {
       this.produtoFiltrado.emit(idFiltrar);
       this.sucessoFiltro();
+      this.resetar();
     } else {
       this.erroFiltro();
+      this.resetar();
     }
   }
 
@@ -34,5 +38,9 @@ export class InputComponent {
 
   erroFiltro(): void {
     this.filterFailure.emit(this.exibirErro = true);
+  }
+
+  resetar(): void {
+    this.idFiltrar = '';
   }
 }

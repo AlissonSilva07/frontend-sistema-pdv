@@ -1,6 +1,6 @@
 <div class="w-full flex items-center z-40">
-    <input #idParaFiltrar type="text" name="cod-produto" placeholder="{{texto}}" class="w-full p-4 text-cinza-400 text-sm rounded-3xl shadow-padrao outline-none border">
-    <button (click)="filtrarProdutos(idParaFiltrar.value)" class="group flex flex-col items-center -ml-10 relative">
+    <input [(ngModel)]="idFiltrar" type="text" name="cod-produto" placeholder="{{texto}}" class="w-full p-4 text-cinza-400 text-sm rounded-3xl shadow-padrao outline-none border">
+    <button (click)="filtrarProdutos(idFiltrar)" class="group flex flex-col items-center -ml-10 relative">
         <fa-icon [icon]="faMagnifyingGlass" class="rounded-full px-2 py-1 text-azul group-hover:text-white group-hover:bg-azul transition-all ease-in-out delay-75"></fa-icon>
     </button>
 </div>
