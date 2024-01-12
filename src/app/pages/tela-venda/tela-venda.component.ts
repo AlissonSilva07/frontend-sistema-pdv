@@ -60,8 +60,13 @@ export class TelaVendaComponent {
       this.listaService.adicionarProduto(prod);
       this.totalPreco = this.listaService.getTotalPreco();
       this.totalItens = this.listaService.getTotalItens();
-      this.exibeResetCarrinho = true;
+      this.resetaCampos();      
+      this.exibeResetCarrinho = true;      
     }
+  }
+
+  resetaCampos(): void {
+    this.quantidadeInput = 1;
   }
 
   //Funções vindas de output

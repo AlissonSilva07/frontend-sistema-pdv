@@ -1,5 +1,5 @@
-<div class="relative w-[114px]">
-	<button (click)="quantidadeAtual <= 1 ? quantidadeAtual : diminuir()" class="absolute left-0 p-2 bg-azul hover:brightness-90 transition-all ease-in-out delay-75 text-white text-sm font-bold rounded-l-2xl shadow-padrao">-</button>
-	<input type="text" class="w-[114px] p-2 rounded-xl shadow-padrao text-center text-cinza-400 text-sm outline-none" [(ngModel)]="quantidadeAtual"/>
-	<button (click)="aumentar()" class="absolute right-0 p-2 bg-azul hover:brightness-90 transition-all ease-in-out delay-75 text-white text-sm font-medium rounded-r-2xl">+</button>
+<div class="flex items-center w-[114px]">
+	<button (click)="quantidadeInput <= 1 ? quantidadeInput : diminuir()" class="p-2 bg-azul hover:brightness-90 transition-all ease-in-out delay-75 text-white text-sm font-bold rounded-l-2xl shadow-padrao">-</button>
+	<span class="w-[114px] p-2 shadow-padrao text-center text-cinza-400 text-sm"><p>{{quantidadeInput}}</p></span>
+	<button (click)="aumentar()" class="p-2 bg-azul hover:brightness-90 transition-all ease-in-out delay-75 text-white text-sm font-medium rounded-r-2xl">+</button>
 </div>
