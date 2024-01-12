@@ -8,7 +8,7 @@ import { faCalculator } from '@fortawesome/free-solid-svg-icons';
 })
 export class FinalizarComponent {
   faCalculator = faCalculator;
-  troco!: number;
+  recebido!: number;
 
   @Input() totalPreco!: number;
   @Input() totalItens!: number;
@@ -17,7 +17,7 @@ export class FinalizarComponent {
   @Output() adicionaVenda = new EventEmitter();
 
   calculaTroco(): void {
-    this.mandaTroco.emit(this.troco);
+    this.mandaTroco.emit(this.recebido);
   }
 
   adicionarVenda(): void {

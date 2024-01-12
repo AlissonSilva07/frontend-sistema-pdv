@@ -20,9 +20,9 @@
             <div class="h-full flex flex-col justify-center gap-2">
                 <div class="flex gap-4">
                     <p class="text-sm text-cinza-400 font-medium">Recebido:</p>
-                    <input type="text" placeholder="0,00" [(ngModel)]="troco" class="text-xl w-full outline-none">
+                    <input type="number" placeholder="0,00" [(ngModel)]="recebido" class="text-xl w-full outline-none">
                 </div>
-                <button (click)="calculaTroco()" class="px-2 py-1 bg-azul group-hover:brightness-90 flex items-center justify-center gap-2 transition-all ease-in-out delay-75 rounded-lg shadow-padrao">
+                <button [disabled]="!recebido" (click)="calculaTroco()" class="px-2 py-1 bg-azul group-hover:brightness-90 disabled:bg-cinza-400 flex items-center justify-center gap-2 transition-all ease-in-out delay-75 rounded-lg shadow-padrao">
                     <fa-icon [icon]="faCalculator" class="text-sm text-white"></fa-icon>
                     <p class="text-xs font-bold text-branco group-hover:brightness-90 transition-all ease-in-out delay-75">Calcular troco</p>
                 </button>

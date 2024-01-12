@@ -56,9 +56,9 @@ export class TelaVendaComponent {
   //Função que adiciona o produto ao carrinho
   adicionarAoCarrinho(): void {
     if (this.produtoPesquisa) {
-      let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, this.arredondaPreço(this.produtoPesquisa.valUnitario * this.quantidadeInput));
+      let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, (this.produtoPesquisa.valUnitario * this.quantidadeInput));
       this.listaService.adicionarProduto(prod);
-      this.totalPreco = this.arredondaPreço(this.listaService.getTotalPreco());
+      this.totalPreco = this.listaService.getTotalPreco();
       this.totalItens = this.listaService.getTotalItens();
       this.exibeResetCarrinho = true;
     }
@@ -76,11 +76,15 @@ export class TelaVendaComponent {
   }
 
   trocoReceiver(recebido: number): void {
-    this.troco = this.listaService.getTroco(recebido);
+    if (recebido > this.listaService.getTotalPreco()) {
+      this.troco = this.listaService.getTroco(recebido);
+    } else {
+      alert('O valor recebido não pode ser menor que o valor a se pagar.')
+    }
   }
 
   adicionaVendaReceiver(finaliza: boolean) {
-    if (finaliza && this.carr.length > 0 && this.troco > 0) {
+    if (finaliza && this.carr.length > 0) {
       //Buca a data atual
       let dataAtual = new Date().toJSON().slice(0, 10);
 
