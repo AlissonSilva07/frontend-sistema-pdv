@@ -26,26 +26,20 @@ export class ListaProdutosService {
   getTotalPreco(): number {
     let totalPreco: number = 0;
     for(let preco of this.lista) {
-      totalPreco = totalPreco + preco.getTotal();
+      totalPreco += preco.getTotal();
     }
-    return this.arredondaPreco(totalPreco);
+    return totalPreco;
   }
 
   getTotalItens(): number {
     let totalItens: number = 0;
     for(let item of this.lista) {
-      totalItens = totalItens + item.getQtd();
+      totalItens += item.getQtd();
     }
     return totalItens;
   }
 
   getTroco(valRecebido: number): number {
-    return this.arredondaPreco(valRecebido - this.getTotalPreco());
-  }
-
-  //Funcão auxiliar pra arredondamento de moeda
-  arredondaPreco(preco: number): number {
-    preco.toPrecision(2);
-    return preco;
+    return valRecebido - this.getTotalPreco();
   }
 }

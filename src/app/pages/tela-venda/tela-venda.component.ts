@@ -98,7 +98,7 @@ export class TelaVendaComponent {
       //Buca a data atual
       let dataAtual = new Date().toJSON().slice(0, 10);
 
-      let novaVenda = new Venda(dataAtual, this.listaService.getTotalPreco(), this.troco, this.listaService.getLista());
+      let novaVenda = new Venda(dataAtual, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
       console.log(novaVenda)
     } else {
       alert('Você não finalizou a venda.')
@@ -106,8 +106,7 @@ export class TelaVendaComponent {
   }
 
   //Funcão auxiliar pra arredondamento de moeda
-  arredondaPreço(preco: number): number {
-    preco.toPrecision(2);
-    return preco;
+  arredondaPreco(preco: number): number {
+    return Math.round(preco * 1000) / 1000;
   }
 }
