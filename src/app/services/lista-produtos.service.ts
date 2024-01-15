@@ -28,7 +28,7 @@ export class ListaProdutosService {
     for(let preco of this.lista) {
       totalPreco = totalPreco + preco.getTotal();
     }
-    return this.arredondaPreço(totalPreco);
+    return this.arredondaPreco(totalPreco);
   }
 
   getTotalItens(): number {
@@ -40,11 +40,11 @@ export class ListaProdutosService {
   }
 
   getTroco(valRecebido: number): number {
-    return this.arredondaPreço(valRecebido - this.getTotalPreco());
+    return this.arredondaPreco(valRecebido - this.getTotalPreco());
   }
 
   //Funcão auxiliar pra arredondamento de moeda
-  arredondaPreço(preco: number): number {
+  arredondaPreco(preco: number): number {
     preco.toPrecision(2);
     return preco;
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Produto } from 'src/app/models/Produto.model';
 import { faMagnifyingGlass, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 

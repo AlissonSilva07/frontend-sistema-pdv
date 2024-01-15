@@ -58,8 +58,7 @@ export class TelaVendaComponent {
     if (this.produtoPesquisa) {
       let prod = new ProdutoCarrinho(this.produtoPesquisa.idProduto, this.produtoPesquisa.nomeProduto, this.quantidadeInput, this.produtoPesquisa.valUnitario, (this.produtoPesquisa.valUnitario * this.quantidadeInput));
       this.listaService.adicionarProduto(prod);
-      this.totalPreco = this.listaService.getTotalPreco();
-      this.totalItens = this.listaService.getTotalItens();
+      this.atualizaLista();
       this.resetaCampos();      
       this.exibeResetCarrinho = true;      
     }
@@ -67,6 +66,12 @@ export class TelaVendaComponent {
 
   resetaCampos(): void {
     this.quantidadeInput = 1;
+    this.troco = 0;
+  }
+
+  atualizaLista(): void {    
+    this.totalPreco = this.listaService.getTotalPreco();
+    this.totalItens = this.listaService.getTotalItens();
   }
 
   //Funções vindas de output
@@ -99,7 +104,6 @@ export class TelaVendaComponent {
       alert('Você não finalizou a venda.')
     }
   }
-
 
   //Funcão auxiliar pra arredondamento de moeda
   arredondaPreço(preco: number): number {

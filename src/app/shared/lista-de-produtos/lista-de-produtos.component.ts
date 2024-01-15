@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
-import { faShoppingCart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faTrashCan, faX } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-lista-de-produtos',
@@ -10,6 +10,7 @@ import { faShoppingCart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 export class ListaDeProdutosComponent {
   faShoppingCart = faShoppingCart;
   faTrashCan = faTrashCan;
+  faX = faX;
 
   @Input() lista!: ProdutoCarrinho[];
   @Input() reset!: boolean;
