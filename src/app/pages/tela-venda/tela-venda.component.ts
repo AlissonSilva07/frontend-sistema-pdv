@@ -4,6 +4,8 @@ import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
 import { Venda } from 'src/app/models/Venda.model';
 import { ListaProdutosService } from 'src/app/services/lista-produtos.service';
 import { ProdutoService } from 'src/app/services/produto.service';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-venda',
@@ -12,12 +14,16 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class TelaVendaComponent {
 
+  faClose = faClose;
+
   produtoPesquisa!: Produto;
   msgRetorno!: string;
   error!: boolean;
+  openPopUpConfirmaVenda: boolean = false;
 
   constructor(private produtoService: ProdutoService,
-              private listaService: ListaProdutosService) {}
+              private listaService: ListaProdutosService,
+              private router: Router) {}
 
   //Buscar produto por ID
   buscarProdutoPorID(idFiltrar: number) {
@@ -64,6 +70,15 @@ export class TelaVendaComponent {
     }
   }
 
+  adicionarVenda(): void {
+    //Buca a data atual
+    let dataAtual = new Date().toJSON().slice(0, 10);
+
+    let novaVenda = new Venda(dataAtual, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
+    this.router.navigate(['/historico']);
+    console.log(novaVenda)
+  }
+
   resetaCampos(): void {
     this.quantidadeInput = 1;
     this.troco = 0;
@@ -95,11 +110,7 @@ export class TelaVendaComponent {
 
   adicionaVendaReceiver(finaliza: boolean) {
     if (finaliza && this.carr.length > 0) {
-      //Buca a data atual
-      let dataAtual = new Date().toJSON().slice(0, 10);
-
-      let novaVenda = new Venda(dataAtual, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
-      console.log(novaVenda)
+      this.openPopUpConfirmaVenda = true;
     } else {
       alert('Você não finalizou a venda.')
     }
