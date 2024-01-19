@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnDestroy } from '@angular/core';
 import { Produto } from 'src/app/models/Produto.model';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
 import { Venda } from 'src/app/models/Venda.model';
@@ -23,7 +23,8 @@ export class TelaVendaComponent {
 
   constructor(private produtoService: ProdutoService,
               private listaService: ListaProdutosService,
-              private router: Router) {}
+              private router: Router,
+              private elementRef: ElementRef) {}
 
   //Buscar produto por ID
   buscarProdutoPorID(idFiltrar: number) {
@@ -75,6 +76,7 @@ export class TelaVendaComponent {
     let dataAtual = new Date().toJSON().slice(0, 10);
 
     let novaVenda = new Venda(dataAtual, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
+    this.resetaLista();
     this.router.navigate(['/historico']);
     console.log(novaVenda)
   }
@@ -82,6 +84,11 @@ export class TelaVendaComponent {
   resetaCampos(): void {
     this.quantidadeInput = 1;
     this.troco = 0;
+  }
+
+  resetaLista(): void {
+    this.listaService.limparLista();
+    this.carr =this.listaService.getLista();
   }
 
   atualizaLista(): void {    
