@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnDestroy } from '@angular/core';
+import { Component} from '@angular/core';
 import { Produto } from 'src/app/models/Produto.model';
-import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
-import { Venda } from 'src/app/models/Venda.model';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.class';
+import { Venda } from 'src/app/models/Venda.class';
 import { ListaProdutosService } from 'src/app/services/lista-produtos.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
@@ -23,8 +23,7 @@ export class TelaVendaComponent {
 
   constructor(private produtoService: ProdutoService,
               private listaService: ListaProdutosService,
-              private router: Router,
-              private elementRef: ElementRef) {}
+              private router: Router) {}
 
   //Buscar produto por ID
   buscarProdutoPorID(idFiltrar: number) {

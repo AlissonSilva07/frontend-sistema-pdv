@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.model';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho.class';
 import { faShoppingCart, faTrashCan, faX } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
