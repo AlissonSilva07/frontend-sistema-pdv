@@ -1,6 +1,6 @@
 export class ProdutoCarrinho {
     static count: number = 1;
-    private idItem: number;
+    private numeroItem: number;
     private codigo: number | undefined;
     private titulo: string;
     private qtd: number;
@@ -8,7 +8,7 @@ export class ProdutoCarrinho {
     private total: number;
 
     constructor(codigo: number | undefined, titulo: string, qtd: number, valUnit: number, total: number) {
-        this.idItem = ProdutoCarrinho.count++;
+        this.numeroItem = ProdutoCarrinho.count++;
         this.codigo = codigo;
         this.titulo = titulo;
         this.qtd = qtd;
@@ -16,8 +16,8 @@ export class ProdutoCarrinho {
         this.total = total;
     }
 
-    public getIdItem(): number {
-        return this.idItem;
+    public getNumeroItem(): number {
+        return this.numeroItem;
     }
 
     public getCodigo(): number | undefined {
