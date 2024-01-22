@@ -17,11 +17,34 @@
 
 <div *ngIf="openPopUpConfirmaVenda" class="fixed top-0 right-0 left-0 bottom-0 bg-esmaecido backdrop-blur-sm flex flex-col z-50">
     <div class="my-auto mx-auto p-8 bg-white rounded-lg w-1/3 flex flex-col items-center gap-4 relative">
-        <p class="text-xl font-bold text-center">Deseja finalizar a venda?</p>
-        <p class="text-cinza-400 text-sm">Essa ação incluirá a venda no banco de dados.</p>
+        <p class="text-xl font-bold text-center">Dados do Cliente(a)</p>
+        <p class="text-cinza-400 text-sm">Insira os dados do cliente antes de concluir a venda.</p>
+
+        <form [formGroup]="dadosClienteForm" class="w-full flex flex-col items-center gap-4">
+            <div class="w-full flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                    <label for="nomeCliente" class="text-sm font-bold">Nome</label>
+                    <div *ngIf="nomeCliente?.invalid && (nomeCliente?.dirty || nomeCliente?.touched)">
+                        <div *ngIf="nomeCliente?.errors?.['required']" class="text-xs text-vermelho">* Este campo não pode estar vazio.</div>
+                    </div>
+                </div>                    
+                <input id="nomeCliente" type="text" placeholder="Ex.: Josildo Nunes" formControlName="nomeCliente" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
+            </div>
+
+            <div class="w-full flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                    <label for="telefone" class="text-sm font-bold">Telefone</label>
+                    <div *ngIf="telefone?.invalid && (telefone?.dirty || telefone?.touched)">
+                        <div *ngIf="telefone?.errors?.['required']" class="text-xs text-vermelho">* Este campo não pode estar vazio.</div>
+                    </div>
+                </div>                    
+                <input id="telefone" type="text" placeholder="Ex.: Farinha Tijuca" formControlName="telefone" class="w-full p-2 outline-none text-sm border-2 focus:border-azul rounded-xl" required>
+            </div>
+        </form>
+
         <div class="flex items-center gap-4">
-            <app-main-button textoExibir="Sim" bgCor="bg-azul" textoCor="text-branco" (click)="adicionarVenda()"></app-main-button>
-            <app-main-button textoExibir="Não" bgCor="bg-vermelho" textoCor="text-branco" (click)="openPopUpConfirmaVenda = false"></app-main-button>
+            <app-main-button textoExibir="Finalizar" bgCor="bg-azul" textoCor="text-branco" (click)="adicionarVenda()"></app-main-button>
+            <app-main-button textoExibir="Cancelar" bgCor="bg-vermelho" textoCor="text-branco" (click)="openPopUpConfirmaVenda = false"></app-main-button>
         </div>
         <button (click)="openPopUpConfirmaVenda = false" class="w-8 h-8 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out delay-75 flex flex-col items-center justify-center rounded-full absolute top-2 right-2">
             <fa-icon [icon]="faClose"></fa-icon>

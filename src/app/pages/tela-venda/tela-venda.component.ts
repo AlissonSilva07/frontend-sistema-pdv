@@ -6,6 +6,7 @@ import { ListaProdutosService } from 'src/app/services/lista-produtos.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tela-venda',
@@ -74,7 +75,7 @@ export class TelaVendaComponent {
     //Buca a data atual
     let dataAtual = new Date().toJSON().slice(0, 10);
 
-    let novaVenda = new Venda(dataAtual, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
+    let novaVenda = new Venda(dataAtual, this.dadosClienteForm.value.nomeCliente!, this.dadosClienteForm.value.telefone!, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
     this.resetaLista();
     this.router.navigate(['/historico']);
     console.log(novaVenda)
@@ -125,5 +126,19 @@ export class TelaVendaComponent {
   //Funcão auxiliar pra arredondamento de moeda
   arredondaPreco(preco: number): number {
     return Math.round(preco * 1000) / 1000;
+  }
+
+  //Dados do cliente
+  dadosClienteForm = new FormGroup({
+    nomeCliente: new FormControl('', [Validators.required]),
+    telefone: new FormControl('', Validators.required),
+  })
+
+  get nomeCliente() {
+    return this.dadosClienteForm.get('nomeCliente');
+  }
+
+  get telefone() {
+    return this.dadosClienteForm.get('telefone');
   }
 }
