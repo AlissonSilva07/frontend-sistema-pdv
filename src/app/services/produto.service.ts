@@ -13,26 +13,26 @@ export class ProdutoService {
   constructor(private http: HttpClient) { }
 
   todosProdutos(): Observable<Produto[]> {
-      return this.http.get<Produto[]>(`${environment.baseUrl}/todos`);
+      return this.http.get<Produto[]>(`${environment.urlProdutos}/todos`);
   }
 
   todasCategorias(): Observable<string[]> {
-    return this.http.get<string[]>(`${environment.baseUrl}/categorias`);
+    return this.http.get<string[]>(`${environment.urlProdutos}/categorias`);
   }
 
   produtoPorID(id: number): Observable<Produto> {
-    return this.http.get<Produto>(`${environment.baseUrl}/buscar/${id}`);
+    return this.http.get<Produto>(`${environment.urlProdutos}/buscar/${id}`);
   }
 
   postarProduto(produto: any): Observable<any> {
-    return this.http.post(`${environment.baseUrl}/postar`, produto);
+    return this.http.post(`${environment.urlProdutos}/postar`, produto);
   }
 
   deletarProduto(ids: (undefined | number)[]): Observable<(undefined | number)[]> {
-    return this.http.delete<(undefined | number)[]>(`${environment.baseUrl}/deletar/${ids}`);
+    return this.http.delete<(undefined | number)[]>(`${environment.urlProdutos}/deletar/${ids}`);
   }
 
   atualizarProduto(idAtualizar: number, produtoAtualizar: any): Observable<any> {
-    return this.http.put(`${environment.baseUrl}/atualizar/${idAtualizar}`, produtoAtualizar);
+    return this.http.put(`${environment.urlProdutos}/atualizar/${idAtualizar}`, produtoAtualizar);
   }
 }

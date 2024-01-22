@@ -7,6 +7,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { VendaService } from 'src/app/services/venda.service';
 
 @Component({
   selector: 'app-tela-venda',
@@ -24,6 +25,7 @@ export class TelaVendaComponent {
 
   constructor(private produtoService: ProdutoService,
               private listaService: ListaProdutosService,
+              private vendaService: VendaService,
               private router: Router) {}
 
   //Buscar produto por ID
@@ -76,9 +78,14 @@ export class TelaVendaComponent {
     let dataAtual = new Date().toJSON().slice(0, 10);
 
     let novaVenda = new Venda(dataAtual, this.dadosClienteForm.value.nomeCliente!, this.dadosClienteForm.value.telefone!, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
+    this.vendaService.postarVenda(novaVenda).subscribe({
+      next: res => {
+        console.log(res);
+      },
+      error: e => console.log(e)
+    });
     this.resetaLista();
     this.router.navigate(['/historico']);
-    console.log(novaVenda)
   }
 
   resetaCampos(): void {

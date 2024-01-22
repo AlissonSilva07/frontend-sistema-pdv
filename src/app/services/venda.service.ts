@@ -1,24 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Venda } from '../models/Venda.class';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VendaService {
 
-  vendas!: Venda[];
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  adicionaVenda(vendaAdc: Venda): void {
-    this.vendas.push(vendaAdc);
+  getVendas(): Observable<Venda[]> {
+    return this.http.get<Venda[]>(`${environment.urlVendas}/todas`);
   }
 
-  getVendas(): Venda[] {
-    return this.vendas;
-  }
-
-  imprimeVendas():void {
-    console.log(this.vendas);
+  postarVenda(venda: any): Observable<any> {
+    return this.http.post(`${environment.urlVendas}/postar`, venda);
   }
 }
