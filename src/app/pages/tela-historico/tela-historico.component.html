@@ -3,7 +3,7 @@
         <p class="text-2xl text-cinza-400 font-bold">Histórico de Vendas</p>
         <app-input texto="ID da Venda"></app-input>
     </div>
-    <div class="flex flex-col gap-4 overflow-y-scroll no-scrollbar">
-        <app-card-venda></app-card-venda>
+    <div class="flex flex-col gap-8 overflow-y-scroll no-scrollbar">
+        <app-card-venda [vendas]="vendas"></app-card-venda>
     </div>
 </main>

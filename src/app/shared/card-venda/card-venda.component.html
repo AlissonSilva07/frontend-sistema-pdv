@@ -1,9 +1,9 @@
-<div class="w-full h-[128px] py-4 px-8 rounded-xl bg-white flex items-center gap-10 shadow-padrao border">
+<div *ngFor="let venda of vendas" class="w-full px-8 py-4 rounded-xl bg-white flex items-center gap-10 shadow-padrao border">
     <div class="flex flex-col items-center gap-2">
-        <p class="text-3xl text-cinza-600 font-medium">R$3,00</p>
-        <div class="bg-azul text-xs text-white text-center font-bold py-1 px-16 rounded-2xl">p003-a3e-222</div>
+        <p class="text-3xl text-cinza-600 font-medium">{{ venda.valorTotal | currency: 'BRL' }}</p>
+        <div class="w-52 bg-azul text-xs text-white text-center font-bold overflow-hidden truncate py-1 px-2 rounded-2xl">{{ venda.idVenda }}</div>
     </div>
-    <div class="w-[1px] h-[86px] bg-cinza-600"></div>
+    <div class="w-[1px] h-[86px] bg-cinza-400"></div>
     <div class="flex-1">
         <table>
             <tr>
@@ -11,7 +11,7 @@
                     <p class="text-sm text-cinza-400">Data:</p>
                 </td>
                 <td>
-                    <p class="text-sm text-cinza-600 font-bold">21/12/2022</p>
+                    <p class="text-sm text-cinza-600 font-bold">{{ venda.dataCriacao | date: 'dd/MM/yyyy' }}</p>
                 </td>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
                     <p class="text-sm text-cinza-400">Quantidade:</p>
                 </td>
                 <td>
-                    <p class="text-sm text-cinza-600 font-bold">1</p>
+                    <p class="text-sm text-cinza-600 font-bold">{{ venda.carrinho.length }}</p>
                 </td>
             </tr>
             <tr>
@@ -35,12 +35,9 @@
                     <p class="text-sm text-cinza-400">Cliente:</p>
                 </td>
                 <td>
-                    <p class="text-sm text-cinza-600 font-bold">Doralice dos Santos</p>
+                    <p class="text-sm text-cinza-600 font-bold">{{ venda.nomeCliente }}</p>
                 </td>
             </tr>
         </table>
-    </div>
-    <div class="object-contain">
-        <img src="./assets/sale.svg" alt="" class="w-32">
     </div>
 </div>

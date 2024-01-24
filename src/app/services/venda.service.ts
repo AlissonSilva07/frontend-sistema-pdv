@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Venda } from '../models/Venda.class';
+import { Venda } from '../models/Venda.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
