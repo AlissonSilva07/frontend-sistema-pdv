@@ -1,9 +1,8 @@
 <main class="w-full h-screen pt-20 pb-8 pl-[272px] pr-8 bg-cinza-100 flex flex-col gap-4 z-10">
     <div class="flex items-center justify-between">
         <p class="text-2xl text-cinza-400 font-bold">Histórico de Vendas</p>
-        <app-input texto="ID da Venda"></app-input>
     </div>
-    <div class="flex flex-col gap-8 overflow-y-scroll no-scrollbar">
+    <div class="flex flex-col overflow-y-scroll no-scrollbar">
         <app-card-venda [vendas]="vendas"></app-card-venda>
     </div>
 </main>
