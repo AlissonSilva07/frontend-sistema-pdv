@@ -21,7 +21,6 @@ export class TelaHistoricoComponent implements OnInit{
     this.vendaService.getVendas()
       .subscribe({
         next: data => {
-          console.log(data);
           this.vendas = data;
         },
         error: e => console.log(e)

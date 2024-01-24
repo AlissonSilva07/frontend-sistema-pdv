@@ -82,7 +82,7 @@ export class TelaVendaComponent {
       error: e => console.log(e)
     });
     this.resetaLista();
-    this.router.navigate(['/historico']);
+    this.router.navigateByUrl('/historico');
   }
 
   resetaCampos(): void {
