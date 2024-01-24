@@ -3,15 +3,14 @@ import { ProdutoCarrinho } from "./ProdutoCarrinho.class";
 
 export class Venda {
     private idVenda?: string;
-    private dataCriacao: string;
+    private dataCriacao!: string;
     private nomeCliente: string;
     private telefone: string;
     private valorTotal: number;
     private troco: number;
     private carrinho: ProdutoCarrinho[];
 
-    constructor(dataCriacao: string, nomeCliente: string, telefone: string, valorTotal: number, troco: number, carrinho: ProdutoCarrinho[]) {
-        this.dataCriacao = dataCriacao;
+    constructor(nomeCliente: string, telefone: string, valorTotal: number, troco: number, carrinho: ProdutoCarrinho[]) {
         this.nomeCliente = nomeCliente;
         this.telefone = telefone;
         this.valorTotal = valorTotal;

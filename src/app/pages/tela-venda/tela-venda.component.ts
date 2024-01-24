@@ -74,10 +74,7 @@ export class TelaVendaComponent {
   }
 
   adicionarVenda(): void {
-    //Buca a data atual
-    let dataAtual = new Date().toJSON().slice(0, 10);
-
-    let novaVenda = new Venda(dataAtual, this.dadosClienteForm.value.nomeCliente!, this.dadosClienteForm.value.telefone!, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
+    let novaVenda = new Venda(this.dadosClienteForm.value.nomeCliente!, this.dadosClienteForm.value.telefone!, this.arredondaPreco(this.listaService.getTotalPreco()), this.arredondaPreco(this.troco), this.listaService.getLista());
     this.vendaService.postarVenda(novaVenda).subscribe({
       next: res => {
         console.log(res);
