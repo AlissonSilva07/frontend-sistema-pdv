@@ -12,10 +12,12 @@
             <fa-icon [icon]="faCartShopping" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
             <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-medium group-focus:text-cinza-600 group-focus:font-medium">Histórico</p>
         </button>
-        <button (click)="toggleSubMenuProdutos()" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 rounded-lg z-50">
+        <button (click)="toggleSubMenuProdutos()" routerLinkActive="active-botao" class="group w-full p-2 flex items-center gap-4 outline-1 outline-cinza-400 outline-dashed rounded-lg z-50">
             <fa-icon [icon]="faProductHunt" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
-            <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-medium group-focus:text-cinza-600 group-focus:font-medium">Produtos</p>
+            <div class="w-full flex items-center justify-between">
+                <p class="text-sm text-cinza-400 group-hover:text-cinza-600 group-hover:font-medium group-focus:text-cinza-600 group-focus:font-medium">Produtos</p>
             <fa-icon [icon]="faChevronDown" class="text-cinza-400 text-sm group-hover:text-[#0561FC] group-focus:text-[#0561FC]"></fa-icon>
+            </div>
         </button>
         <div *ngIf="subMenuProdutosIsOpen" class="-mt-2 w-full bg-white flex flex-col border rounded-lg shadow-padrao transition-all ease-in delay-75 overflow-hidden z-40">
             <a routerLink="/produtos/listar" routerLinkActive="active2" class="h-full p-2 hover:bg-azul-escuro text-sm text-cinza-600 hover:text-white hover:font-medium">
